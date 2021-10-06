@@ -31,12 +31,23 @@ export default function AdminTemplate(props) {
 
         </div>
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-          <Menu.Item key="1" icon={<PieChartOutlined />} onClick={() => {
-            history.push('/admin/dashboard');
-          }}>
-            Users
-          </Menu.Item>
-          <SubMenu key="sub1" icon={<FileOutlined />} title="Films">
+
+
+          <SubMenu key="sub2" icon={<FileOutlined />} title="User">
+            <Menu.Item key="4" icon={<DesktopOutlined />} onClick={() => {
+              history.push('/admin/dashboard');
+            }}>
+              User
+            </Menu.Item>
+            <Menu.Item key="5" icon={<DesktopOutlined />} onClick={() => {
+              history.push('/admin/dashboard/addnewuser');
+            }}>
+              Add new user
+            </Menu.Item>
+          </SubMenu>
+
+
+          <SubMenu key="sub1" icon={<FileOutlined />} title="Film">
             <Menu.Item key="2" icon={<DesktopOutlined />} onClick={() => {
               history.push('/admin/films');
             }}>

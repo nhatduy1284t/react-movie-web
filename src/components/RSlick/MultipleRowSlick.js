@@ -34,8 +34,9 @@ export default function MultipleRowSlick(props) {
     const { dangChieu, sapChieu } = useSelector(state => state.QuanLyPhimReducer);
 
     const renderPhim = () => {
-    
-        return props.arrPhim.slice(0,12).map((item, index) => {
+
+        return props.arrPhim.slice(0, 12).map((item, index) => {
+            console.log({item})
             return <div key={index}>
                 <Film phim={item} />
             </div>
@@ -57,20 +58,20 @@ export default function MultipleRowSlick(props) {
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
     };
-    
+
     return (
         <div>
-      <button className={`${styleSlick[activeClassDC]} px-8 py-3 font-semibold rounded bg-gray-800 text-white mr-2`} onClick={()=> {
-          const action = {type:SET_PHIM_DANG_CHIEU}
-          dispatch(action);
-      }}>PHIM ĐANG CHIẾU</button>
-      <button className={`${styleSlick[activeClassSC]} px-8 py-3 font-semibold rounded bg-white text-gray-800 border-gray-800 border`} onClick={()=>{
-        const action = {type:SET_PHIM_SAP_CHIEU}
-        dispatch(action);
-      }}>PHIM SẮP CHIẾU</button>
-      <Slider {...settings}>
-        {renderPhim()}
-      </Slider>
-    </div>
+            <button className={`${styleSlick[activeClassDC]} px-8 py-3 font-semibold rounded bg-gray-800 text-white mr-2`} onClick={() => {
+                const action = { type: SET_PHIM_DANG_CHIEU }
+                dispatch(action);
+            }}>PHIM ĐANG CHIẾU</button>
+            <button className={`${styleSlick[activeClassSC]} px-8 py-3 font-semibold rounded bg-white text-gray-800 border-gray-800 border`} onClick={() => {
+                const action = { type: SET_PHIM_SAP_CHIEU }
+                dispatch(action);
+            }}>PHIM SẮP CHIẾU</button>
+            <Slider {...settings}>
+                {renderPhim()}
+            </Slider>
+        </div>
     );
 }

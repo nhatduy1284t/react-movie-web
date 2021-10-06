@@ -21,7 +21,7 @@ export default function Home() {
             <HomeCarousel/>
             <div className="container">
                 <section className="text-gray-600 body-font">
-                    <div className="container px-5 py-24 mx-auto">
+                    <div className="container px-48 py-24 mx-auto">
                         <MultipleRows arrPhim={arrPhim} />
                     </div>
                 </section>

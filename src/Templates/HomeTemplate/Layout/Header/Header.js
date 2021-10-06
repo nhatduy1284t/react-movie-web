@@ -1,15 +1,16 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { history } from '../../../../App'
-import { Select } from 'antd';
-
+import { Select, Menu, Dropdown } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import _ from 'lodash';
 import { Fragment } from 'react';
-import { USER_LOGIN } from '../../../../util/settings';
-
+import { DownOutlined } from '@ant-design/icons';
+import { TOKEN, USER_LOGIN } from '../../../../util/settings';
+import "./Header.scss"
 const { Option } = Select;
+
 export default function Header() {
     const { userLogin } = useSelector(state => state.QuanLyNguoiDungReducer);
     const { t, i18n } = useTranslation();
@@ -17,44 +18,65 @@ export default function Header() {
     const handleChange = (value) => {
         i18n.changeLanguage(value);
     }
-    console.log()
+    const menu = (
+        <Menu>
+            <Menu.Item>
+                <NavLink rel="noopener noreferrer" to="/profile">
+                    Thông tin cá nhân
+                </NavLink>
+            </Menu.Item>
+
+            <Menu.Item danger onClick={() => {
+                localStorage.removeItem(TOKEN);
+                localStorage.removeItem(USER_LOGIN);
+                window.location.reload();
+            }}>Đăng xuất</Menu.Item>
+        </Menu>
+    );
     const renderLogin = () => {
         if (_.isEmpty(userLogin)) {
             return <Fragment>
-                <button onClick={() => {
-                    history.push('/login')
-                }} className="self-center px-8 py-3 rounded">{t('signin')}</button>
-                <button onClick={() => {
+                <div className="flex">
+                    <img src="https://tix.vn/app/assets/img/avatar.png" className="rounded-full mr-2"  width={30}/>
+                    <button onClick={() => {
+                        history.push('/login')
+                    }} className="self-center rounded text-gray-400">Đăng nhập</button>
+                </div>
+                {/* <button onClick={() => {
                     history.push('/register')
-                }} className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-coolGray-900">{t('signup')}</button>
+                }} className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-coolGray-900">{t('signup')}</button> */}
 
             </Fragment>
         }
-        return <button onClick={() => {
-            history.push('/profile')
-        }} className="self-center px-8 py-3 rounded">{t('Hello')} {userLogin.taiKhoan}</button>
+        return <Dropdown overlay={menu}>
+            <NavLink className="ant-dropdown-link self-center px-8 py-3 rounded text-black" to="/profile">
+                {t('Hello')}  {userLogin.taiKhoan} <DownOutlined />
+            </NavLink>
+        </Dropdown>
+
     }
+
     return (
-        <header className="p-4 dark:bg-coolGray-800 dark:text-coolGray-100 bg-black bg-opacity-40 fixed z-10 w-full text-white">
-            <div className="container flex justify-between h-16 mx-auto">
-                <a href="#" aria-label="Back to homepage" className="flex items-center p-2">
-                    <img width={50} src="https://i.imgur.com/lC22izJ.png" />
-                </a>
-                <ul className="items-stretch hidden space-x-3 lg:flex ">
+        <header className="header dark:bg-coolGray-800 dark:text-coolGray-100 bg-white bg-opacity-95 fixed z-10 w-full text-black">
+            <nav className="container flex justify-between h-16 mx-auto px-4">
+                <NavLink to="/home" aria-label="Back to homepage" className="flex items-center p-2">
+                    <img width={50} src="https://tix.vn/app/assets/img/icons/web-logo.png" />
+                </NavLink>
+                <ul className="header__navItem mb-0 items-stretch hidden space-x-3 lg:flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
 
                     <li className="flex">
-                        <NavLink to="/home" activeClassName="border-b-2" className="flex items-center -mb-0.5 px-4 dark:border-transparent text-white">Home</NavLink>
+                        <NavLink to="/home" activeClassName="" className="navLink">Home</NavLink>
                     </li>
                     <li className="flex">
-                        <NavLink to="/contact" activeClassName="border-b-2" className="flex items-center -mb-0.5 px-4 dark:border-transparent dark:text-violet-400 dark:border-violet-400 text-white">contact</NavLink>
+                        <NavLink to="/contact" activeClassName="" className="navLink">contact</NavLink>
                     </li>
 
                     <li className="flex">
-                        <NavLink to="/news" activeClassName="border-b-2" className="flex items-center -mb-0.5 px-4 dark:border-transparent text-white">news</NavLink>
+                        <NavLink to="/news" activeClassName="" className="navLink">Tin tức</NavLink>
                     </li>
                     {userLogin.maLoaiNguoiDung === "QuanTri" ? <li className="flex">
-                        <NavLink to="/admin" activeClassName="border-b-2" className="flex items-center -mb-0.5 px-4 dark:border-transparent text-white">Quản lý</NavLink>
-                    </li> : <Fragment/>}
+                        <NavLink to="/admin" activeClassName="" className="navLink">Quản lý</NavLink>
+                    </li> : <Fragment />}
 
 
                 </ul>
@@ -66,12 +88,8 @@ export default function Header() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
-                {/* <Select defaultValue="en" style={{ width: 120 }} onChange={handleChange}>
-                    <Option value="en">Eng</Option>
-                    <Option value="chi">Cn</Option>
-                    <Option value="vi">Vi</Option>
-                </Select> */}
-            </div>
+
+            </nav>
         </header>
 
     )

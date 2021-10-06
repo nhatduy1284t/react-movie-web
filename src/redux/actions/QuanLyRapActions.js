@@ -5,7 +5,6 @@ export const layDanhSachHeThongRapAction = () => {
     return async (dispatch) => {
         try {
             let result = await quanLyRapService.layDanhSachHeThongRap();
-            console.log('result', result.data.content);
             dispatch({
                 type: SET_HE_THONG_RAP_CHIEU,
                 heThongRapChieu: result.data.content

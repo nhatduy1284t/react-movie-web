@@ -1,0 +1,5 @@
+header {
+  .navLink {
+    @apply flex items-center -mb-0.5 px-4 text-black hover:text-red-500 font-normal; 
+  }
+}

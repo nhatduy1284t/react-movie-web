@@ -9,7 +9,7 @@ export const getCarouselAction = () => {
         try {
             let result = await quanLyPhimService.layDanhSachBanner();
             
-            console.log(result);
+
             dispatch({
                 type: 'SET_CAROUSEL',
                 arrImg: result.data.content

@@ -12,6 +12,7 @@ export default function HomeCarousel(props) {
         backgroundSize:'cover',
         backgroundPosition:'center',
         backgroundRepeat:'no-repeat',
+        marginTop:'64px'
     };
     const dispatch = useDispatch();
     
@@ -21,7 +22,7 @@ export default function HomeCarousel(props) {
 
     },[])
     const renderImg = () => {
-        console.log(arrImg)
+
         return arrImg.map((item, index) => {
             return <div className="w-full">
                 <div style={{...contentStyle,backgroundImage:`url("${item.hinhAnh}")`}}>

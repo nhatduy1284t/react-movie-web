@@ -12,7 +12,7 @@ const HomeMenu = memo((props) => {
         this.setState({ tabPosition: e.target.value });
     };
     useEffect(() => {
-        console.log(props, 'thisprops123')
+   
     }, [])
 
     const renderHeThongRap = () => {

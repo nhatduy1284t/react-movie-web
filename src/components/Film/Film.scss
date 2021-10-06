@@ -1,0 +1,24 @@
+$bg-rating : #1f2e46;
+@mixin bgImg() {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.film__container {
+    .film__ratingWrapper {
+        background-color: $bg-rating;
+    }
+    .film__img {
+        height:300px;
+        @include bgImg();
+    }
+    
+    &:hover {
+        .film__video {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+

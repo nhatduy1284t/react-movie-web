@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
-import { capNhatThongTinNguoiDung, layThongTinNguoiDungAction } from '../../redux/actions/QuanLyNguoiDungActions';
+import { capNhatThongTinNguoiDung, layThongTinTaiKhoanAction } from '../../redux/actions/QuanLyNguoiDungActions';
 import { GROUP_ID, USER_LOGIN } from '../../util/settings'
 import { Button, Tabs } from 'antd';
 import { AppleOutlined, AndroidOutlined, ExclamationCircleOutlined, HomeOutlined, SettingOutlined } from '@ant-design/icons';
@@ -26,7 +26,7 @@ export default function Profile(props) {
     const { thongTinDatVe } = thongTinNguoiDung;
     useEffect(() => {
 
-        dispatch(layThongTinNguoiDungAction());
+        dispatch(layThongTinTaiKhoanAction());
     }, [])
     let userLogin = JSON.parse(localStorage.getItem(USER_LOGIN));
 

@@ -1,6 +1,8 @@
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { history } from "../../App";
 import { dangNhapAction } from "../../redux/actions/QuanLyNguoiDungActions";
 
 export default function Login() {
@@ -14,12 +16,12 @@ export default function Login() {
             matKhau: '',
         },
         onSubmit: values => {
-            
+
             const action = dangNhapAction(values);
             dispatch(action);
         },
     });
-  
+
 
     return (
         <form
@@ -56,8 +58,12 @@ export default function Login() {
                 <span>Đăng nhập</span>
             </button>
             <button
+                to="/register"
                 className="bg-purple-600 hover:bg-purple-900 text-white font-bold p-2 rounded w-80 mt-2"
                 type="button"
+                onClick={() => {
+                    history.push('/register');
+                }}
             >
                 <span>Đăng ký</span>
             </button>

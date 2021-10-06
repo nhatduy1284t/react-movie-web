@@ -7,7 +7,7 @@ import { CloseOutlined, SmileOutlined, UserOutlined } from '@ant-design/icons'
 import _ from 'lodash';
 import { Tabs } from 'antd';
 import { ThongTinDatVe } from '../../_core/models/ThongTinDatVe';
-import { layThongTinNguoiDungAction } from '../../redux/actions/QuanLyNguoiDungActions';
+import { layThongTinTaiKhoanAction } from '../../redux/actions/QuanLyNguoiDungActions';
 import moment from 'moment';
 import { connection } from '../../index';
 
@@ -206,7 +206,7 @@ function KetQuaDatVe(props) {
     const dispatch = useDispatch();
     const { thongTinNguoiDung } = useSelector(state => state.QuanLyNguoiDungReducer);
     useEffect(() => {
-        dispatch(layThongTinNguoiDungAction());
+        dispatch(layThongTinTaiKhoanAction());
     }, [])
     const renderTicketItem = () => {
         return thongTinNguoiDung.thongTinDatVe?.map((ticket, index) => {

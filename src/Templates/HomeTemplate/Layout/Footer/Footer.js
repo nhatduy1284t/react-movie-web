@@ -8,8 +8,6 @@ const Footer = memo((props) => {
     let arrHeThongRap = heThongRapChieu.map((heThongRap) => {
         return _.pick(heThongRap, ['maHeThongRap', 'tenHeThongRap', 'logo'])
     })
-    console.log(arrHeThongRap)
-
 
     return (<>
         <footer className="p-6 dark:bg-coolGray-800 dark:text-coolGray-100 divide-y divide-gray-400 divide-opacity-70 divide-solid bg-gray-700 text-white">

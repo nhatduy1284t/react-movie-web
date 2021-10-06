@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { layDanhSachPhimAction, xoaPhimAction } from '../../../redux/actions/QuanLyPhimActions';
 import { NavLink } from 'react-router-dom';
 import { history } from '../../../App';
-import { layDanhSachNguoiDungAction } from '../../../redux/actions/QuanLyNguoiDungActions';
+import { layDanhSachNguoiDungAction, timKiemNguoiDungAction, xoaNguoiDungAction } from '../../../redux/actions/QuanLyNguoiDungActions';
 const { Search } = Input;
 
 export default function Dashboard(props) {
@@ -22,7 +22,6 @@ export default function Dashboard(props) {
         {
             title: 'Tài khoản',
             dataIndex: 'taiKhoan',
-
             width: '20%'
         },
         {
@@ -48,7 +47,7 @@ export default function Dashboard(props) {
             dataIndex: 'soDt',
             onFilter: (value, record) => record.address.indexOf(value) === 0,
             render: (text, film) => {
-                return <span>{text.length > 50 ? text.substr(0, 50) + "..." : text}</span>
+                return text;
             },
 
          
@@ -59,7 +58,7 @@ export default function Dashboard(props) {
             dataIndex: 'maLoaiNguoiDung',
             onFilter: (value, record) => record.address.indexOf(value) === 0,
             render: (text, film) => {
-                return text==="KhachHang" ? <span>Khách hàng</span> : <span className="text-red-600">Quản trị</span>
+                return text==="KhachHang" ? <span key={film.maLoaiKhacHang}>Khách hàng</span> : <span className="text-red-600">Quản trị</span>
             },
 
          
@@ -72,17 +71,12 @@ export default function Dashboard(props) {
             render: (text, item) => {
 
                 return <div>
-                    <NavLink className="text-yellow-500 mr-2 text-2xl" to={`/admin/dashboard/edit/${item.taiKhoan}`}><EditOutlined /></NavLink>
+                    <NavLink key={item.taiKhoan} className="text-yellow-500 mr-2 text-2xl" to={`/admin/dashboard/edit/${item.taiKhoan}`}><EditOutlined /></NavLink>
                     <button className="text-red-600 text-2xl" onClick={async () => {
                         //Gọi action delete
 
-                        if (window.confirm(`Bạn có muốn xoá phim ${item.tenPhim}`)) {
-
-                            await dispatch(xoaPhimAction(item.maPhim));
-                            dispatch({
-                                type: 'SEARCH_PHIM',
-                                arrPhimSearch: arrPhimDefault
-                            })
+                        if (window.confirm(`Bạn có muốn xoá tài khoản ${item.taiKhoan}`)) {
+                            dispatch(xoaNguoiDungAction(item.taiKhoan))
                         }
                     }}><DeleteOutlined /></button>
                    
@@ -99,16 +93,8 @@ export default function Dashboard(props) {
     const onChange = (pagination, filters, sorter, extra) => {
         console.log('params', pagination, filters, sorter, extra);
     }
-    const onSearch = async (event) => {
-        console.log(event.target.value);
-        let tenPhimSearch = event.target.value;
-        let arrPhimSearch = arrPhimDefault.filter((phim, index) => (phim.tenPhim.toLowerCase()).includes(tenPhimSearch.toLowerCase()));
-        console.log(arrPhimSearch)
-        await dispatch({
-            type: 'SEARCH_PHIM',
-            arrPhimSearch: arrPhimSearch,
-            isSearching: true
-        })
+    const onSearch = async (e) => {
+
 
     };
 
@@ -117,9 +103,11 @@ export default function Dashboard(props) {
             <div>
                 <Button onClick={() => {
                     history.push('/admin/films/addnew')
-                }}>Thêm phim</Button>
+                }}></Button>
             </div>
-            <Search className="mb-5" placeholder="input search text " onChange={onSearch} enterButton={<SearchOutlined />} style={{ width: 200 }} />
+            <Search className="mb-5" placeholder="input search text" onChange={onSearch} onPressEnter={(e) => {
+               dispatch(timKiemNguoiDungAction(e.target.value));
+            }} enterButton={<SearchOutlined />} />
             <Table columns={columns} dataSource={data} onChange={onChange} rowKey={"maPhim"} />
 
         </div>
