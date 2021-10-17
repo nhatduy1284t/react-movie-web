@@ -6,6 +6,8 @@ import { Tabs, Rate } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { layThongTinChiTietPhimAction } from "../../redux/actions/QuanLyRapActions"
 import moment from 'moment';
+import "../../assets/styles/reset.css";
+import "./Detail.scss"
 
 import { NavLink } from 'react-router-dom';
 
@@ -25,102 +27,115 @@ export default function Detail(props) {
     }, [])
 
     return (
-        <div style={{ backgroundImage: `url(${phimDetail.hinhAnh})`, backgroundSize: '100%', backgroundPosition: 'center', minHeight: '100vh' }}>
+        <div className="detail" style={{ backgroundImage: `url(${phimDetail.hinhAnh})`, backgroundSize: '100%', backgroundPosition: 'center', minHeight: '100vh' }}>
             <CustomCard
-                style={{ paddingTop: 150, minHeight: '100vh' }}
-                effectColor="#fff" // required
+                style={{ paddingTop: 150, minHeight: '100vh', boxShadow: 'none', paddingLeft: '0', paddingRight: '0' }}
+                effectColor="#C780FF" // required
                 color="#fff" // default color is white
-                blur={10} // default blur value is 10px
-                borderRadius={0} // default border radius value is 10px
+                blur={20} // default blur value is 10px
+                borderRadius={10} // default border radius value is 10px
+
             >
-                <div className="grid grid-cols-12 px-10">
-                    <div className="col-span-5 col-start-3">
-                        <div className="grid grid-cols-3">
-                            <div>
-                                <img className="col-span-1" src={phimDetail.hinhAnh} style={{ width: '100%', height: 300 }} alt="123" />
+                <div className="absolute top-0 left-0 w-full h-full" style={{ backgroundImage: 'linear-gradient(to top, black, transparent 100%)' }}></div>
+                <div className="container flex justify-between px-64 relative">
+                    <div className="w-2/3">
+                        <div className="flex">
+                            <div className="w-1/2">
+                                {/* <img className="col-span-1" src={phimDetail.hinhAnh} style={{ width: '100%', height: 300 }} alt="123" /> */}
+                                <div style={{ backgroundImage: `url(${phimDetail.hinhAnh})`, backgroundSize: '100%', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', height: '400px' }}></div>
                             </div>
-                            <div className="col-span-2 ml-5" style={{ marginTop: '25%' }}>
-                                <p className="text-sm">{moment(phimDetail.ngayKhoiChieu).format('DD.MM.YYYY')}</p>
-                                <p className="text-4xl leading-3">{phimDetail.tenPhim}</p>
-                                <p>{phimDetail.moTa}</p>
+                            <div className="col-span-2 ml-5 w-1/2" style={{ marginTop: '25%' }}>
+                                <p className="text-sm mb-0">{moment(phimDetail.ngayKhoiChieu).format('DD.MM.YYYY')}</p>
+                                <p className="text-2xl leading-9 font-semibold">{phimDetail.tenPhim}</p>
+                                <a href="#menuDatVe" className="py-1 px-7 text-xl duration-150 bg-red-500 rounded-md text-white hover:text-white hover:bg-opacity-75 transition-all">
+                                    Mua vé</a>
                             </div>
                         </div>
 
                     </div>
 
-                    <div className="col-span-4">
-                        <h1 style={{ marginLeft: '15%', color: 'yellow', fontWeight: 'bold', fontSize: 15 }}>Đánh giá</h1>
-                        <h1 style={{ marginLeft: '5%' }} className="text-green-400 text-2xl"><Rate allowHalf value={phimDetail.danhGia / 2} style={{ color: '#78ed78', fontSize: 30 }} /></h1>
-                        <div className={`c100 p${phimDetail.danhGia * 10} big`}>
-                            <span className="text-white">
-                                {phimDetail.danhGia * 10}%
-                            </span>
-                            <div className="slice">
-                                <div className="bar"></div>
-                                <div className="fill"></div>
+                    <div className="text-center flex justify-end">
+                        <div>
+                            <h1 className="m-0 text-white" style={{ fontWeight: 'bold', fontSize: 15 }}></h1>
+                            <div className=" flex justify-center">
+                                <div className={`c100 p${phimDetail.danhGia * 10} big w-full transform translate-y-4 mr-0`} style={{ marginRight: '0' }}>
+                                    <span className="text-white" style={{ color: 'white' }}>
+                                        {/* {phimDetail.danhGia} */}
+                                        <span style={{ position: 'absolute', top: '0', left: '50%', transform: 'translate(-50%,0)', fontSize: '70px' }}>9</span>
+                                    </span>
+                                    <div className="slice">
+                                        <div className="bar">
+                                            <span className="reset danhGia"></span>
+                                        </div>
+                                        <div className="fill relative">
 
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
+                            <h1 className="text-green-400 text-2xl m-0"><Rate disabled allowHalf value={phimDetail.danhGia / 2} style={{ color: '#FF3232', fontSize: 30 }} /></h1>
+                            <br />
                         </div>
-                        <br />
-
                     </div>
                 </div>
-
-                <div className="mt-10 ml-72 w-2/3 container bg-white px-5 py-5" >
-                    <Tabs defaultActiveKey="1" centered >
-                        <TabPane tab="Lịch chiếu" key="1" style={{ minHeight: 300 }}>
-                            <div >
-                                <Tabs tabPosition={'left'} >
-                                    {phimDetail.heThongRapChieu?.map((htr, index) => {
-                                        return <TabPane
-                                            tab={<div className="flex flex-row items-center justify-center">
-                                                <img src={htr.logo} className="rounded-full w-full" style={{ width: 50 }} alt="..." />
-                                                <div className="text-center ml-2">
-                                                    {htr.tenHeThongRap}
-                                                </div>
-                                            </div>}
-                                            key={index}>
-                                            {htr.cumRapChieu?.map((cumRap, index) => {
-                                                return <div className="mt-5" key={index}>
-                                                    <div className="flex flex-row">
-                                                        <img style={{ width: 60, height: 60 }} src={cumRap.hinhAnh} alt="..." />
-                                                        <div className="ml-2">
-                                                            <p style={{ fontSize: 20, fontWeight: 'bold', lineHeight: 1 }} >{cumRap.tenCumRap}</p>
-                                                            <p className="text-gray-400" style={{ marginTop: 0 }}>{cumRap.diaChi}</p>
+                <div className="menuDatVe relative">
+                    <div id="menuDatVe" className="mt-10 ml-72 w-2/3 container" >
+                        <Tabs defaultActiveKey="1" centered className="rounded-md">
+                            <TabPane tab="Lịch chiếu" key="1" style={{ minHeight: 300 }}>
+                                <div >
+                                    <Tabs className="tabDatVe" tabPosition={'left'} >
+                                        {phimDetail.heThongRapChieu?.map((htr, index) => {
+                                            return <TabPane
+                                                className="overflow-y-scroll" style={{ height: '450px' }}
+                                                tab={<div className="flex flex-row items-center justify-center">
+                                                    <img src={htr.logo} className="rounded-full w-full" style={{ width: 50 }} alt="..." />
+                                                    <div className="text-center ml-2">
+                                                        {htr.tenHeThongRap}
+                                                    </div>
+                                                </div>}
+                                                key={index}>
+                                                {htr.cumRapChieu?.map((cumRap, index) => {
+                                                    return <div className="mt-5" key={index}>
+                                                        <div className="flex flex-row">
+                                                            <img style={{ width: 60, height: 60 }} src={cumRap.hinhAnh} alt="..." />
+                                                            <div className="ml-2">
+                                                                <p style={{ fontSize: 20, fontWeight: 'bold', lineHeight: 1 }} >{cumRap.tenCumRap}</p>
+                                                                <p className="text-gray-400" style={{ marginTop: 0 }}>{cumRap.diaChi}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div className="thong-tin-lich-chieu grid grid-cols-4 gap-4 pr-5">
+                                                            {cumRap.lichChieuPhim?.slice(0, 12).map((lichChieu, index) => {
+                                                                return <NavLink to={`/checkout/${lichChieu.maLichChieu}`} key={index} className="button-30">
+                                                                    {moment(lichChieu.ngayChieuGioChieu).format('hh:mm A')}
+                                                                </NavLink>
+                                                            })}
                                                         </div>
                                                     </div>
-                                                    <div className="thong-tin-lich-chieu grid grid-cols-4">
-                                                        {cumRap.lichChieuPhim?.slice(0, 12).map((lichChieu, index) => {
-                                                            return <NavLink to={`/checkout/${lichChieu.maLichChieu}`} key={index} className="col-span-1 text-green-800 font-bold">
-                                                                {moment(lichChieu.ngayChieuGioChieu).format('hh:mm A')}
-                                                            </NavLink>
-                                                        })}
-                                                    </div>
-                                                </div>
-                                            })}
+                                                })}
 
 
 
-                                        </TabPane>
-                                    })}
+                                            </TabPane>
+                                        })}
 
 
-                                </Tabs>
-                            </div>
-                        </TabPane>
-                        <TabPane tab="Thông tin" key="2" style={{ minHeight: 300 }}>
-                            Thông tin
-                        </TabPane>
-                        <TabPane tab="Đánh giá" key="3" style={{ minHeight: 300 }}>
-                            Đánh giá
-                        </TabPane>
-                    </Tabs>
+                                    </Tabs>
+                                </div>
+                            </TabPane>
+                            <TabPane tab="Thông tin" key="2" style={{ minHeight: 300 }}>
+                                <div className="px-5 pt-5">
+                                    <h1>Nội dung</h1>
+                                    <p>{phimDetail.moTa}</p>
+                                </div>
+                            </TabPane>
+
+                        </Tabs>
+                    </div>
                 </div>
-
             </CustomCard>
 
         </div>
+
     )
 }
 

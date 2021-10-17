@@ -8,15 +8,18 @@ import { store } from './redux/configStore';
 import * as signalR from '@aspnet/signalr'
 import { DOMAIN } from './util/settings';
 import './i18n'
+import { Suspense } from 'react';
 
 
 export const connection = new signalR.HubConnectionBuilder().withUrl(`${DOMAIN}/DatVeHub`).configureLogging(signalR.LogLevel.Information).build();
 
 connection.start().then(() => {
   ReactDOM.render(
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <Suspense fallback={<div>Loading... </div>}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </Suspense>
     ,
     document.getElementById('root')
   );

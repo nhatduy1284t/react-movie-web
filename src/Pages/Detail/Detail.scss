@@ -1,0 +1,81 @@
+.detail {
+  .danhGia {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: xx-large;
+    color: white;
+    font-size: 80px;
+    font-family: "SF Text Regular";
+    color: white;
+    //   transform: rotate(180deg);
+  }
+  .menuDatVe {
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    /* Track */
+    ::-webkit-scrollbar-track {
+      border-radius: 10px;
+      background: rgba(128, 128, 128, 0.3);
+    }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: gray;
+      border-radius: 10px;
+    }
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+    }
+    .ant-tabs-top {
+      > .ant-tabs-nav {
+        &:before {
+          border-bottom: none;
+        }
+        .ant-tabs-tab {
+          div {
+            font-size: 22px;
+            color: white;
+          }
+        }
+        .ant-tabs-tab-active {
+          div {
+            font-size: 22px;
+            color: #fb4226;
+          }
+        }
+
+        .ant-tabs-ink-bar {
+          display: none;
+        }
+      }
+    }
+
+    .ant-tabs-content-holder {
+      .ant-tabs-tabpane {
+        opacity: 0;
+        background-color: white ;
+        transition: all 2s linear;
+      }
+      .ant-tabs-tabpane-active {
+
+        opacity: 1;
+      }
+      .ant-tabs-nav {
+        .ant-tabs-tab {
+          opacity: 0.5;
+        }
+        .ant-tabs-tab-active {
+          opacity: 1;
+          div {
+            color: black;
+          }
+        }
+        .ant-tabs-ink-bar {
+          display: none;
+        }
+      }
+    }
+  }
+}

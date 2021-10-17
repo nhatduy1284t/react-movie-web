@@ -1,3 +1,4 @@
+import axios from "axios";
 import { quanLyRapService } from "../../services/QuanLyRapService"
 import { SET_CHI_TIET_PHIM, SET_HE_THONG_RAP_CHIEU } from "../types/QuanLyRapTypes";
 
@@ -28,3 +29,4 @@ export const layThongTinChiTietPhimAction = (id) => {
         }
     }
 }
+

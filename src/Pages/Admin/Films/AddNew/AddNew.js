@@ -32,7 +32,6 @@ export default function AddNew(props) {
             hot: false,
             danhGia: 0,
             hinhAnh: {},
-
         },
         onSubmit: (values) => {
             console.log('values', values);
@@ -55,8 +54,8 @@ export default function AddNew(props) {
         formik.setFieldValue(name, value)
     }
     const handleChangeDatePicker = (values) => {
-        let ngayKhoiChieu = moment(values._d).format('DD/MM/YYYY');
-        formik.setFieldValue('ngayKhoiChieu', ngayKhoiChieu)
+        let ngayKhoiChieu = moment(values).format('DD/MM/YYYY');
+        formik.setFieldValue('ngayKhoiChieu', ngayKhoiChieu);
     }
     const handleChangeDanhGia = (name) => {
         return (value) => {
@@ -64,21 +63,20 @@ export default function AddNew(props) {
         }
     }
     const handleChangeFile = (e) => {
-
-        //lấy file từ event target
+        //Lấy file ra từ e
         let file = e.target.files[0];
-
-        if (file.type === "image/png" || file.type === "image/jpg" || file.type === "image/gif" || file.type === "image/jpeg") {
-            //Tạo đối tượng đọc file
-            console.log(file)
+        if (file.type === 'image/jpeg' || file.type === 'image/jpg' || file.type === 'image/gif' || file.type === 'image/png') {
+            //Tạo đối tượng để đọc file
             let reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = (e) => {
-                setImgSrc(e.target.result);
-            }
-        }
-        formik.setFieldValue('hinhAnh', file)
+                // console.log(e.target.result);
+                setImgSrc(e.target.result);//Hình base 64
 
+            }
+            //Đem dữ liệu file lưu vào formik
+            formik.setFieldValue('hinhAnh', file);
+        }
     }
     const onFormLayoutChange = ({ size }) => {
         setComponentSize(size);
@@ -137,7 +135,7 @@ export default function AddNew(props) {
                 <InputNumber onChange={handleChangeDanhGia('danhGia')} min={0} max={10} placeholder="1-10" />
             </Form.Item>
             <Form.Item label="Hình ảnh">
-                <input type="file" onChange={handleChangeFile} accept="image/jpg, image/png, image/jpeg" />
+            <input type="file" onChange={handleChangeFile} accept="image/png, image/jpeg,image/gif,image/png" />
                 <br />
                 <img width={100} height={100} src={imgSrc} alt="..." />
             </Form.Item>

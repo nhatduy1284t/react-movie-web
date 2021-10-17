@@ -1,0 +1,62 @@
+.home {
+  .appMobile {
+    background-image: url("https://tix.vn/app/assets/img/icons/backapp.jpg");
+
+    h1 {
+      line-height: 66px;
+    }
+    p {
+      font-size: 18px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #fb4226;
+      border-radius: 4px;
+    }
+  }
+}
+
+.homeMenu {
+  .tabDiaDiem {
+    .ant-tabs-nav {
+      width: 38%;
+    }
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(128, 128, 128, 0.3);
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+  }
+  .ant-tabs-tab {
+    opacity: 0.6;
+    &:hover {
+      p {
+        color: #949494;
+      }
+      color: #949494;
+    }
+  }
+  .ant-tabs-tab-active {
+    opacity: 1;
+    p {
+      color: #949494;
+    }
+  }
+  .ant-tabs-ink-bar {
+    display: none;
+  }
+}

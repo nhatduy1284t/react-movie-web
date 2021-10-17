@@ -59,11 +59,11 @@ export default function AdminTemplate(props) {
               Add new
             </Menu.Item>
           </SubMenu>
-          <Menu.Item key="9" icon={<FileOutlined />} onClick={() => {
+          {/* <Menu.Item key="9" icon={<FileOutlined />} onClick={() => {
             history.push('/admin/showtime');
           }}>
             ShowTime
-          </Menu.Item>
+          </Menu.Item> */}
         </Menu>
       </Sider>
       <Layout className="site-layout">

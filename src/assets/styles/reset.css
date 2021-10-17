@@ -1,0 +1,17 @@
+.reset {
+  
+  border: none;
+  color: #000;
+  display: block;
+  font: initial;
+  height: auto;
+  letter-spacing: normal;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+  text-transform: none;
+  visibility: visible;
+  width: auto;
+  word-spacing: normal;
+  z-index: auto;
+}

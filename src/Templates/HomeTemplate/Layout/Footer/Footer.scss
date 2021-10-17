@@ -1,0 +1,31 @@
+$bg-color-footer: #222;
+$color-link: #949494;
+$color-link-hover: white;
+@mixin contentFooter {
+  font-weight: 500;
+  font-size: 12px;
+  color:$color-link;
+}
+.footer {
+  background-color: $bg-color-footer;
+  a {
+    color: #949494;
+    font-weight: 500;
+    font-size: 12px;
+    &:hover {
+      color: $color-link-hover;
+    }
+  }
+  .footer__companyInfo {
+    h1 {
+      margin-bottom: 0;
+      @include contentFooter;
+      color:white;
+      font-weight: 400;
+    }
+    p {
+      margin-bottom: 2px;
+      @include contentFooter;
+    }
+  }
+}

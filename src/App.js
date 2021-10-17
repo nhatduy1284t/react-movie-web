@@ -23,6 +23,7 @@ import Edit from './Pages/Admin/Films/Edit/Edit';
 import EditUser from './Pages/Admin/DashBoard/EditUser/EditUser';
 import AddNewUser from './Pages/Admin/DashBoard/AddNewUser/AddNewUser';
 import "./App.css"
+import CheckoutTemplate from './Templates/CheckoutTemplate/CheckoutTemplate';
 
 const CheckoutTemplateLazy = lazy(() => import('./Templates/CheckoutTemplate/CheckoutTemplate'))
 export const history = createBrowserHistory();
@@ -31,15 +32,13 @@ function App() {
 
   return (
     <Router history={history}>
-      <Loading/>
+      <Loading />
       <Switch>
         <HomeTemplate path='/' exact Component={Home} />
         <HomeTemplate path='/home' exact Component={Home} />
         <HomeTemplate path='/contact' exact Component={Contact} />
         <HomeTemplate path='/news' exact Component={News} />
         <HomeTemplate path='/detail/:id' exact Component={Detail} />
- 
-
         <UserTemplate path='/login' exact Component={Login} />
         <UserTemplate path='/register' exact Component={Register} />
         <UserTemplate path='/profile' exact Component={Profile} />
@@ -48,17 +47,16 @@ function App() {
         <AdminTemplate path="/admin/dashboard" exact Component={DashBoard} />
         <AdminTemplate path="/admin/dashboard/addnewuser" exact Component={AddNewUser} />
         <AdminTemplate path="/admin/dashboard/edit/:taiKhoan" exact Component={EditUser} />
-        
+
         <AdminTemplate path="/admin/films" exact Component={Films} />
         <AdminTemplate path="/admin/films/addnew" exact Component={AddNew} />
         <AdminTemplate path="/admin/films/edit/:id" exact Component={Edit} />
         <AdminTemplate path="/admin/films/showtime/:id/:tenPhim" exact Component={ShowTime} />
-       
-        
-        
-        <Suspense fallback={<h1>LOADING...</h1>}>
+        <CheckoutTemplate path="/checkout/:id" exact Component={Checkout}/> 
+
+        {/* <Suspense fallback={<h1>LOADING...</h1>}>
           <CheckoutTemplateLazy path="/checkout/:id" exact Component={Checkout} />
-        </Suspense>
+        </Suspense> */}
 
       </Switch>
     </Router>

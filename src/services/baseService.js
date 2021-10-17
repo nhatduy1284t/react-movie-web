@@ -19,7 +19,7 @@ export class baseService {
     post = (url, model) => {
 
         return Axios({
-            url: `${DOMAIN}${url}`,
+            url: `${DOMAIN}/${url}`,
             method: 'POST',
             data: model,
             headers: {

@@ -7,12 +7,12 @@ import Header from './Layout/Header/Header';
 
 export const HomeTemplate = (props) => {
     const { Component, ...restProps } = props;
-    return <Route {...restProps}  render={(propsRoute) => {
-        return <Fragment>
-            <Header/>
-            
-            <Component {...propsRoute}/>
-            <Footer/>
+
+    return <Route {...restProps} render={(propsRoute) => {
+        return <Fragment>        
+            <Header />
+            <Component {...propsRoute} />
+            <Footer />
         </Fragment>
     }} />
 }

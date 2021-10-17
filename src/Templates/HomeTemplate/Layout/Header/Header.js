@@ -65,14 +65,17 @@ export default function Header() {
                 <ul className="header__navItem mb-0 items-stretch hidden space-x-3 lg:flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
 
                     <li className="flex">
-                        <NavLink to="/home" activeClassName="" className="navLink">Home</NavLink>
+                        <a href="#lichChieu" activeClassName="" className="navLink">Lịch chiếu</a>
                     </li>
                     <li className="flex">
-                        <NavLink to="/contact" activeClassName="" className="navLink">contact</NavLink>
+                        <a href="#cumRap" activeClassName="" className="navLink">Cụm rạp</a>
                     </li>
 
                     <li className="flex">
-                        <NavLink to="/news" activeClassName="" className="navLink">Tin tức</NavLink>
+                        <a href="#" activeClassName="" className="navLink">Tin tức</a>
+                    </li>
+                    <li className="flex">
+                        <a href="#ungDung" activeClassName="" className="navLink">Ứng dụng</a>
                     </li>
                     {userLogin.maLoaiNguoiDung === "QuanTri" ? <li className="flex">
                         <NavLink to="/admin" activeClassName="" className="navLink">Quản lý</NavLink>

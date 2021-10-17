@@ -1,24 +1,35 @@
-$bg-rating : #1f2e46;
+$bg-rating: #1f2e46;
 @mixin bgImg() {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+* {
+  margin: 0;
+}
+.film {
 
-.film__container {
+  .film__container {
     .film__ratingWrapper {
-        background-color: $bg-rating;
+      background-color: $bg-rating;
     }
     .film__img {
-        height:300px;
-        @include bgImg();
+      height: 340px;
+      @include bgImg();
     }
-    
-    &:hover {
-        .film__video {
-            opacity: 1;
-            visibility: visible;
-        }
-    }
-}
 
+    &:hover {
+      .film__video {
+        opacity: 1;
+        visibility: visible;
+      }
+      .film__detail {
+        opacity: 0;
+      }
+      .film__btnBuyTicket {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+}
