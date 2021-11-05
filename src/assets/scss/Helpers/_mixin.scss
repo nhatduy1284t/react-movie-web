@@ -1,0 +1,26 @@
+
+@mixin padding-x($space) {
+    padding-left: $space;
+    padding-right: $space;
+}
+@mixin desktop {@media (max-width: #{$desktop-width}) {     
+    @content;  
+   } 
+}
+
+@mixin ipad {@media (max-width: #{$ipad-width}) {     
+    @content;  
+   } 
+}
+@mixin iphone678plus {@media (max-width: #{$iphone6-7-8plus-width}) {     
+    @content;  
+   } 
+}
+@mixin iphone6-7-8plus {@media (max-width: #{$iphone6-7-8plus-width}) {     
+    @content;  
+   } 
+}
+@mixin iphone6-7-8 {@media (max-width: #{$iphone6-7-8-width}) {     
+    @content;  
+   } 
+}

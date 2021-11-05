@@ -1,5 +1,49 @@
+@import "../../../../assets/scss/main.scss";
 header {
+  position: relative;
+  z-index: 9999;
   .navLink {
-    @apply flex items-center -mb-0.5 px-4 text-black hover:text-red-500 font-normal; 
+    @apply flex items-center -mb-0.5 px-4 text-black hover:text-red-500 font-normal;
   }
+  .sideMenu {
+  display:none;
+  }
+}
+
+@include desktop {
+  header {
+    .container {
+      max-width: 100%;
+      .header__navItem {
+        a {
+          padding: 0 0.5rem;
+        }
+      }
+    }
+    .sideLeft {
+      transition: all 0.3 ease-out;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .sideMenu {
+      display:block;
+      transition: all 0.3s ease-out;
+      background: white;
+      height: 100vh;
+      transform: translateX(100%);
+      padding-top:20px;
+      .ant-dropdown-trigger.ant-dropdown-link {
+        padding:20px;
+      }
+      .navLink {
+        font-size: 18px;
+        padding:20px;
+      }
+    }
+    .sideMenuActive {
+      transform: translateX(0);
+    }
+  }
+}
+
+@include ipad {
 }

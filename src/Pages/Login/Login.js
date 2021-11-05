@@ -1,15 +1,11 @@
 import { useFormik } from "formik";
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { history } from "../../App";
 import { dangNhapAction } from "../../redux/actions/QuanLyNguoiDungActions";
 
 export default function Login() {
     const dispatch = useDispatch();
-
-
-
     const formik = useFormik({
         initialValues: {
             taiKhoan: '',
@@ -33,7 +29,7 @@ export default function Login() {
             className="p-10 rounded-lg flex justify-center items-center flex-col shadow-md"
             onSubmit={formik.handleSubmit}
         >
-            <img src="https://tix.vn/app/assets/img/login/group@2x.png" />
+            <img src="https://tix.vn/app/assets/img/login/group@2x.png" alt="..."/>
             <p className="mb-5 text-3xl uppercase text-gray-600 "></p>
             <input
                 name="taiKhoan"

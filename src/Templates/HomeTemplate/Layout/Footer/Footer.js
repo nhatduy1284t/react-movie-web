@@ -12,10 +12,10 @@ const Footer = memo((props) => {
     })
 
     return (<>
-        <footer id="footer" className="footer p-6 dark:text-coolGray-100  text-white">
-            <div className="container px-60 divide-y divide-gray-400 divide-opacity-70 divide-solid ">
-                <div className="grid grid-cols-2 mx-auto gap-x-3 gap-y-8 sm:grid-cols-3 md:grid-cols-5 ">
-                    <div className="flex flex-col space-y-4 ">
+        <footer id="footer" className="footer  p-6 dark:text-coolGray-100  text-white">
+            <div className="container mx-auto px-60 divide-y divide-gray-400 divide-opacity-70 divide-solid ">
+                <div className="grid grid-cols-2 mx-auto gap-x-3 gap-y-8 sm:grid-cols-3 md:grid-cols-5 mb-7 ">
+                    <div className="flex flex-col space-y-4  ipadDisplayNone">
                         <h2 className="font-medium text-white">TIX</h2>
                         <div className="flex flex-col space-y-2 text-sm dark:text-coolGray-400" >
                             <a href="https://tix.vn/" className="text-white">FAQ</a>
@@ -23,14 +23,14 @@ const Footer = memo((props) => {
                         </div>
                     </div>
                     <div className="flex flex-col space-y-4">
-                        <h2 className="font-medium opacity-0">{'space'}</h2>
+                        <h2 className="font-medium opacity-0 ipadDisplayNone">{'space'}</h2>
                         <div className="flex flex-col space-y-2 text-sm dark:text-coolGray-400">
                             <a href="https://tix.vn/" >Thỏa thuận sử dụng</a>
                             <a href="https://tix.vn/" >Chính sách bảo mật</a>
 
                         </div>
                     </div>
-                    <div className="flex flex-col space-y-4 ">
+                    <div className="flex flex-col space-y-4 ipadDisplayNone">
                         <h2 className="font-medium text-white">Đối tác</h2>
                         <ul className="grid grid-cols-5 gap-2 text-sm dark:text-coolGray-400">
                             {arrHeThongRap.map((item, index) => {
@@ -41,7 +41,7 @@ const Footer = memo((props) => {
 
                         </ul>
                     </div>
-                    <div className="flex flex-col space-y-4">
+                    <div className="flex flex-col space-y-4 ml-8 ipadDisplayNone">
                         <h2 className="font-medium text-white" >MOBILE APP</h2>
                         <div className="flex space-y-2 text-sm dark:text-coolGray-400">
                             <NavLink to="/home" style={{ width: "30px", height: '30px', marginRight: '10px' }}>
@@ -54,7 +54,7 @@ const Footer = memo((props) => {
                         </div>
                     </div>
                     <div className="flex flex-col space-y-4 ">
-                        <h2 className="font-medium text-white">SOCIAL</h2>
+                        <h2 className="font-medium text-white ipadDisplayNone">SOCIAL</h2>
                         <div className="flex space-y-2 text-sm dark:text-coolGray-400">
                             <NavLink to="/home" style={{ width: "30px", height: '30px', marginRight: '10px' }}>
                                 <img src="https://tix.vn/app/assets/img/icons/facebook-logo.png" style={{ width: '100%' }} className="mr-2 w-full hover:opacity-60 cursor-pointer duration-300" />

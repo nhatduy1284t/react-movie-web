@@ -7,66 +7,38 @@ import Film from "../Film/Film";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_PHIM_DANG_CHIEU, SET_PHIM_SAP_CHIEU } from "../../redux/types/QuanLyPhimTypes";
 import { Modal } from "antd";
+import { history } from "../../App";
 
-
-function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-        <div
-            className={`${className} ${styleSlick['slick-next']}`}
-            style={{ ...style, display: "block", width: 50, height: 100 ,right:'-20px',transform:'translate(100%,-100%)'}}
-            onClick={onClick}
-        ></div>
-    );
-}
-
-function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-        <div
-            className={`${className} ${styleSlick['slick-prev']}`}
-            style={{ ...style, display: "block", width: 50, height: 100,left:'-20px',transform:'translate(-100%,-100%)' }}
-            onClick={onClick}
-        />
-    );
-}
 
 export default function MultipleRowSlick(props) {
     const dispatch = useDispatch();
     const { dangChieu, sapChieu } = useSelector(state => state.QuanLyPhimReducer);
+    const [xemThemClick, setXemThemClick] = useState(false);
     const [visible, setVisible] = useState(false);
-    const [trailerSrc,setTrailerSrc]=useState('');
+    const [trailerSrc, setTrailerSrc] = useState('');
     const [trailer, setTrailer] = useState({
         srcTrailer: "https://www.youtube.com/embed/tgbNymZ7vqY",
         visible: false
     });
+
     const renderPhim = () => {
-        return props.arrPhim.map((item, index) => {
-            return <div key={item}>
-                <Film phim={item} key={index} setTrailer={setTrailer} setTrailerSrc={setTrailerSrc}  setVisible={setVisible}/>
-            </div>
-        })
+        if (xemThemClick) {
+            return props.arrPhim.map((item, index) => {
+                return <Film phim={item} key={index} setTrailer={setTrailer} setTrailerSrc={setTrailerSrc} setVisible={setVisible} />
+
+            })
+        }
+        else
+            return props.arrPhim.splice(0, 8).map((item, index) => {
+                return <Film phim={item} key={index} setTrailer={setTrailer} setTrailerSrc={setTrailerSrc} setVisible={setVisible} />
+
+            })
     }
-
-
     let activeClassDC = dangChieu === true ? 'active_Film' : 'none_active_Film';
     let activeClassSC = sapChieu === true ? 'active_Film' : 'none_active_Film';
-
-    const settings = {
-        className: "center",
-        centerMode: false,
-        infinite: true,
-        centerPadding: "2px",
-        slidesToShow: 1,
-        speed: 500,
-        rows: 2,
-        slidesPerRow: 4,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />
-    }
-
+    console.log(props.arrPhim.length)
     return (
-        <div id="lichChieu">
+        <div className="multipleRowMobile" id="lichChieu">
             <div className="text-center mb-10">
                 <button className={`${styleSlick[activeClassDC]} px-8 py-3 font-semibold rounded bg-gray-800 text-white mr-2`} onClick={() => {
                     const action = { type: SET_PHIM_DANG_CHIEU }
@@ -77,20 +49,26 @@ export default function MultipleRowSlick(props) {
                     dispatch(action);
                 }}>PHIM SẮP CHIẾU</button>
             </div>
-            <Slider {...settings} style={{boxShadow:'0px 43px 79px -50px rgba(0,0,0,0.16)'}}>
+            <div className="flex flex-wrap">
                 {renderPhim()}
-            </Slider>
-            
+            </div>
+            {xemThemClick == false && <div className="text-center">
+
+                <button onClick={() => {
+                    setXemThemClick(true);
+                }} className="border-2 rounded-lg border-gray-200 px-2 py-1">Xem thêm</button>
+            </div>}
+
             <Modal
                 title=" "
                 centered
                 visible={visible}
 
                 onCancel={() => {
-                    document.querySelector('#video').src="";
+                    document.querySelector('#video').src = "";
                     setTrailerSrc('');
                     setVisible(false);
-                    
+
                 }}
                 width={1000}
                 footer={null}

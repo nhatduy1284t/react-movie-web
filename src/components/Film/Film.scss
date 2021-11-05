@@ -1,3 +1,4 @@
+@import "../../assets/scss/main.scss";
 $bg-rating: #1f2e46;
 @mixin bgImg() {
   background-size: cover;
@@ -8,13 +9,14 @@ $bg-rating: #1f2e46;
   margin: 0;
 }
 .film {
-
   .film__container {
+    @include padding-x(10px);
     .film__ratingWrapper {
       background-color: $bg-rating;
     }
     .film__img {
       height: 340px;
+
       @include bgImg();
     }
 
@@ -29,6 +31,29 @@ $bg-rating: #1f2e46;
       .film__btnBuyTicket {
         visibility: visible;
         opacity: 1;
+      }
+    }
+  }
+}
+@include ipad {
+  .film {
+    .film__container {
+      .film__img {
+        height: 255px;
+      }
+    }
+  }
+}
+
+@include iphone6-7-8plus {
+  .multipleRowMobile {
+    margin-top:40px;
+    .film {
+      width: 50%;
+      .film__container {
+        .film__img {
+          height: 250px;
+        }
       }
     }
   }

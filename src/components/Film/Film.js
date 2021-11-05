@@ -1,4 +1,4 @@
-
+/*eslint-disable*/ 
 import { PlayCircleOutlined } from '@ant-design/icons';
 import React from 'react'
 import { history } from '../../App';
@@ -13,18 +13,13 @@ export default function Film(props) {
         return arrStar;
     }
     return (
-        // <div className="p-4 lg:w-1/4">
         <div className="film cursor-pointer mb-10">
-            <div className="film__container h-full px-2 rounded-lg overflow-hidden text-center relative">
+            <div className="film__container h-full rounded-lg overflow-hidden text-center relative">
                 <div >
-                    {/* style={{ backgroundImage: `url(${phim.hinhAnh})`, backgroundPosition: 'center', backgroundSize: '100%', backgroundRepeat: 'no-repeat' }} */}
                     <div className="film__img rounded-md relative" style={{ backgroundImage: `url(${phim.hinhAnh})` }}>
                         <div className="film__video absolute w-full h-full z-10 bg-gradient-to-t from-black to-transparent opacity-0 flex justify-center items-center ">
                             <PlayCircleOutlined onClick={() => {
-                                // props.setTrailer({
-                                //     srcTrailer:phim.trailer,
-                                //     visible:true
-                                // })
+
 
                                 props.setTrailerSrc(phim.trailer)
                                 props.setVisible(true);

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+/*eslint-disable*/ 
+import React, { useEffect } from 'react'
 import { Table, Input, Button } from 'antd';
 import { SearchOutlined, EditOutlined, DeleteOutlined, CalendarOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { layDanhSachPhimAction, xoaPhimAction } from '../../../redux/actions/QuanLyPhimActions';
 import { NavLink } from 'react-router-dom';
 import { history } from '../../../App';
 import { layDanhSachNguoiDungAction, timKiemNguoiDungAction, xoaNguoiDungAction } from '../../../redux/actions/QuanLyNguoiDungActions';
@@ -12,10 +12,12 @@ export default function Dashboard(props) {
 
     const { arrPhimDefault, arrPhimSearch, isSearching } = useSelector(state => state.QuanLyPhimReducer);
     const { danhSachNguoiDung } = useSelector(state => state.QuanLyNguoiDungReducer);
-    const [state, setstate] = useState('');
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(layDanhSachNguoiDungAction());
+    
+            dispatch(layDanhSachNguoiDungAction());
+        
+
     }, [])
 
     const columns = [
@@ -39,7 +41,7 @@ export default function Dashboard(props) {
             dataIndex: 'email',
 
             onFilter: (value, record) => record.address.indexOf(value) === 0,
-          
+
             width: '20%'
         },
         {
@@ -50,7 +52,7 @@ export default function Dashboard(props) {
                 return text;
             },
 
-         
+
             width: '15%'
         },
         {
@@ -58,10 +60,10 @@ export default function Dashboard(props) {
             dataIndex: 'maLoaiNguoiDung',
             onFilter: (value, record) => record.address.indexOf(value) === 0,
             render: (text, film) => {
-                return text==="KhachHang" ? <span key={film.maLoaiKhacHang}>Khách hàng</span> : <span className="text-red-600">Quản trị</span>
+                return text === "KhachHang" ? <span key={film.maLoaiKhacHang}>Khách hàng</span> : <span className="text-red-600">Quản trị</span>
             },
 
-         
+
             width: '20%'
         },
         {
@@ -79,7 +81,7 @@ export default function Dashboard(props) {
                             dispatch(xoaNguoiDungAction(item.taiKhoan))
                         }
                     }}><DeleteOutlined /></button>
-                   
+
                 </div>
             },
             width: '25%'
@@ -106,7 +108,7 @@ export default function Dashboard(props) {
                 }}></Button>
             </div>
             <Search className="mb-5" placeholder="input search text" onChange={onSearch} onPressEnter={(e) => {
-               dispatch(timKiemNguoiDungAction(e.target.value));
+                dispatch(timKiemNguoiDungAction(e.target.value));
             }} enterButton={<SearchOutlined />} />
             <Table columns={columns} dataSource={data} onChange={onChange} rowKey={"maPhim"} />
 

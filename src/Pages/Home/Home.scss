@@ -1,4 +1,16 @@
+@import "../../assets/scss/main.scss";
 .home {
+  .home__carousel {
+    .carousel__item {
+      height: 720px;
+    }
+  }
+  .home__phimNoiBat.container {
+    max-width: 1050px;
+
+    @include padding-x(10px);
+  }
+
   .appMobile {
     background-image: url("https://tix.vn/app/assets/img/icons/backapp.jpg");
 
@@ -15,48 +27,192 @@
     }
   }
 }
+.homeMenuWrapper {
+  max-width: 1050px;
+  @include padding-x(0);
+  .homeMenu {
+    max-width: 1050px;
+    border: 1px solid rgba(128, 128, 128, 0.15);
 
-.homeMenu {
-  .tabDiaDiem {
-    .ant-tabs-nav {
-      width: 38%;
+    .diaChi {
+      font-size: 12px;
     }
-  }
-  ::-webkit-scrollbar {
-    width: 5px;
-  }
+    .tabDiaDiem {
+      .ant-tabs-nav {
+        width: 38%;
+      }
+    }
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
 
-  /* Track */
-  ::-webkit-scrollbar-track {
-    border-radius: 10px;
-    background: rgba(128, 128, 128, 0.1);
-  }
+    /* Track */
+    ::-webkit-scrollbar-track {
+      border-radius: 10px;
+      background: rgba(126, 126, 126, 0.1);
+    }
 
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: rgba(128, 128, 128, 0.8);;
-    border-radius: 10px;
-  }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: rgba(128, 128, 128, 0.25);
+      border-radius: 10px;
+    }
 
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-  }
-  .ant-tabs-tab {
-    opacity: 0.6;
-    &:hover {
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+    }
+    .ant-tabs-tab {
+      opacity: 0.6;
+      &:hover {
+        p {
+          color: #949494;
+        }
+        color: #949494;
+      }
+    }
+    .ant-tabs-tab-active,
+    .ant-tabs-tab:hover {
+      opacity: 1;
+      font-weight: 500;
       p {
         color: #949494;
       }
-      color: #949494;
+    }
+    .ant-tabs-ink-bar {
+      display: none;
     }
   }
-  .ant-tabs-tab-active {
-    opacity: 1;
-    p {
-      color: #949494;
+}
+
+@include desktop {
+  .home {
+    .home__carousel {
+      .carousel__item {
+        height: 400px;
+      }
+    }
+    .home__phimNoiBat {
+      .container {
+        @include padding-x(0px);
+        padding: 0 !important;
+        background-color: red !important;
+        // padding: 0;
+      }
+    }
+    .homeMenuWrapper {
+      @include padding-x(43px);
+    }
+    .appMobile {
+      .container {
+        @include padding-x(55px);
+      }
+      h1 {
+        line-height: 66px;
+        font-size: xx-large;
+      }
+      p {
+        font-size: 18px;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #fb4226;
+        border-radius: 4px;
+      }
     }
   }
-  .ant-tabs-ink-bar {
-    display: none;
+}
+@include ipad {
+  .home {
+    .homeMenuWrapper {
+      max-width: 100%;
+      @include padding-x(0);
+      .homeMenu {
+        .tenCumRap {
+          font-size: 13px;
+        }
+        .diaChi {
+          font-size: 11px;
+        }
+
+        .ant-tabs-left > .ant-tabs-content-holder {
+          padding-left: 20px;
+        }
+        .ant-tabs-content.ant-tabs-content-left > .ant-tabs-tabpane {
+          padding-left: 0px;
+        }
+        .ant-tabs-content-holder {
+          padding-top: 10px;
+        }
+        .grid-cols-5 {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+      }
+    }
+    .appMobile {
+      .ungDung {
+        padding-top: 64px;
+        > div {
+          flex-direction: column;
+          div {
+            width: 100%;
+            text-align: center;
+            h1 {
+              font-size: 1.8em;
+              line-height: 46px;
+              margin-bottom: 20px;
+              width: 55%;
+              margin: 0 auto;
+              margin-bottom: 25px;
+            }
+            p {
+              font-size: 1em;
+              margin-bottom: 20px;
+            }
+            &:nth-child(2) {
+              justify-content: center;
+              img {
+                width: 400px;
+                padding: 0 28px;
+                margin: 0 auto;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include iphone6-7-8plus {
+  .home {
+    .home__carousel {
+      display: none;
+    }
+    .homeMenuWrapper {
+      display: none;
+    }
+    .appMobile {
+      padding-top:70px;
+      padding-bottom: 80px;
+      .ungDung {
+        padding: 0;
+        > div {
+          div {
+            h1 {
+              width:90%;
+              font-weight: 700;
+            }
+            p {
+              padding:0 20px;
+            }
+            &:nth-child(2) {
+              img {
+                padding:0 105px;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

@@ -1,4 +1,12 @@
+@import "../../assets/scss/main.scss";
 .detail {
+  .container {
+    max-width: 876px;
+  }
+  .upper.container {
+    margin-top: 150px;
+    margin-bottom: 80px;
+  }
   .danhGia {
     position: absolute;
     top: 50%;
@@ -10,6 +18,14 @@
     font-family: "SF Text Regular";
     color: white;
     //   transform: rotate(180deg);
+  }
+  .hinhAnhPhimWrapper {
+    .hinhAnhPhim {
+      min-height: 335px;
+      max-width: 265px;
+      width: 100%;
+      height: 100%;
+    }
   }
   .menuDatVe {
     ::-webkit-scrollbar {
@@ -55,11 +71,10 @@
     .ant-tabs-content-holder {
       .ant-tabs-tabpane {
         opacity: 0;
-        background-color: white ;
+        background-color: white;
         transition: all 2s linear;
       }
       .ant-tabs-tabpane-active {
-
         opacity: 1;
       }
       .ant-tabs-nav {
@@ -76,6 +91,83 @@
           display: none;
         }
       }
+    }
+  }
+}
+
+@include desktop {
+  .detail {
+    .upper.container {
+      margin-top: 110px;
+      margin-bottom: 20px;
+    }
+    .hinhAnhPhimWrapper {
+      width: 40%;
+      margin-right: 15px;
+      .hinhAnhPhim {
+        max-width: 220px;
+        min-height: 315px;
+      }
+    }
+  }
+}
+@include ipad {
+  .detail {
+    .upper.container {
+      margin-top: 50px;
+      padding-left: 14px;
+    }
+    .hinhAnhPhimWrapper {
+      width: 40%;
+      margin-right: 15px;
+      .hinhAnhPhim {
+        max-width: 220px;
+        min-height: 269px;
+      }
+    }
+    a {
+      font-size: 16px;
+    }
+    .menuDatVe {
+      padding: 0 14px;
+    }
+  }
+}
+
+@include iphone6-7-8plus {
+  .detail {
+    .upper.container {
+      flex-direction: column;
+      padding-left: 0;
+      > div {
+        width: 100%;
+        > div {
+          flex-direction: column;
+          .hinhAnhPhimWrapper {
+            width: 100%;
+            justify-content: center;
+            .hinhAnhPhim {
+              max-width: 190px;
+              border-radius: 10px;
+            }
+          }
+          div {
+            text-align: center;
+            p {
+              margin-bottom: 10px;
+            }
+          }
+        }
+        &:last-child {
+          justify-content: center;
+        }
+      }
+    }
+    .menuDatVe {
+      padding: 0;
+    }
+    .ant-tabs.ant-tabs-left.ant-tabs-mobile.tabDatVe {
+      flex-direction: column;
     }
   }
 }

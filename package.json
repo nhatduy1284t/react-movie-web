@@ -49,7 +49,10 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "no-unused-vars": "off"
+    }
   },
   "browserslist": {
     "production": [
@@ -64,6 +67,7 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^9.0.0"
+    "autoprefixer": "^9.0.0",
+    "concurrently": "^6.3.0"
   }
 }

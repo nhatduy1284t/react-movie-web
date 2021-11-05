@@ -1,15 +1,17 @@
-import React, { Fragment, useEffect, useState } from 'react'
+/*eslint-disable*/ 
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { datGheAction, datVeAction, layChiTietPhongVeAction } from '../../redux/actions/QuanLyDatVeActions';
 import style from './Checkout.module.css';
 import './Checkout.css'
-import { CloseOutlined, SmileOutlined, UserOutlined } from '@ant-design/icons'
+import { CloseOutlined, HomeOutlined, SmileOutlined, UserOutlined } from '@ant-design/icons'
 import _ from 'lodash';
 import { Tabs } from 'antd';
 import { ThongTinDatVe } from '../../_core/models/ThongTinDatVe';
 import { layThongTinTaiKhoanAction } from '../../redux/actions/QuanLyNguoiDungActions';
 import moment from 'moment';
 import { connection } from '../../index';
+import { history } from '../../App';
 
 
 const { TabPane } = Tabs;
@@ -25,30 +27,30 @@ function Checkout(props) {
         const action = layChiTietPhongVeAction(props.match.params.id);
         dispatch(action);
         //Nếu 1 client đặt vé thành công thì load lại danh sách phòng vé
-        connection.on('datVeThanhCong',() => {
+        connection.on('datVeThanhCong', () => {
             dispatch(action);
         });
         //Vừa vào trang thì load tất cả ghế khách đang đặt
-        connection.invoke('loadDanhSachGhe',props.match.params.id)
+        connection.invoke('loadDanhSachGhe', props.match.params.id)
         //Load danh sach ghe dang dat tu server(lắng nghe tín hiệu tu)
         connection.on("loadDanhSachGheDaDat", (dsGheKhachDat) => {
-            console.log('danhSachGheKhachDat',dsGheKhachDat);
+            console.log('danhSachGheKhachDat', dsGheKhachDat);
             //Bước 1: Loại mình ra khỏi danh sách 
             dsGheKhachDat = dsGheKhachDat.filter(item => item.taiKhoan !== userLogin.taiKhoan);
             //Bước 2 gộp danh sách ghế khách đặt ở tất cả user thành 1 mảng chung 
 
-            let arrGheKhachDat = dsGheKhachDat.reduce((result,item,index)=>{
+            let arrGheKhachDat = dsGheKhachDat.reduce((result, item, index) => {
                 let arrGhe = JSON.parse(JSON.parse(item.danhSachGhe));
 
-                return [...result,...arrGhe];
-            },[]);
+                return [...result, ...arrGhe];
+            }, []);
 
             // //Đưa dữ liệu ghế khách đặt cập nhật redux
-            arrGheKhachDat = _.uniqBy(arrGheKhachDat,'maGhe');
+            arrGheKhachDat = _.uniqBy(arrGheKhachDat, 'maGhe');
 
             //Đưa dữ liệu ghế khách đặt về redux
             dispatch({
-                type:'DAT_GHE',
+                type: 'DAT_GHE',
                 arrGheKhachDat
             })
             //Sự kiện khi reload trang
@@ -57,10 +59,10 @@ function Checkout(props) {
             //     clearGhe();
             //     window.removeEventListener('beforeunload',clearGhe);
             // }
-         })
+        })
     }, [])
-    const clearGhe = function(event) {
-        connection.invoke('huyDat',userLogin.taiKhoan,props.match.params.id)
+    const clearGhe = function (event) {
+        connection.invoke('huyDat', userLogin.taiKhoan, props.match.params.id)
     }
 
     const renderSeats = () => {
@@ -231,6 +233,11 @@ function KetQuaDatVe(props) {
                 <div className="flex flex-col text-center w-full mb-20">
                     <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-purple-700">Lịch sử đặt vé khách hàng</h1>
                     <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Chúc bạn xem phim vui vẻ</p>
+                    <div>
+                        <button onClick={() => {
+                            history.push('/home');
+                        }} className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">Quay về trang chủ</button>
+                    </div>
                 </div>
                 <div className="flex flex-wrap -m-2">
                     {renderTicketItem()}
@@ -253,7 +260,12 @@ export default (props) => {
                 number: key
             })
 
-        }}>
+        }} tabBarExtraContent={
+            <div style={{ cursor: 'pointer' }} onClick={() => { history.push('/home') }}>
+                <HomeOutlined style={{ fontSize: '25px' }} />
+            </div>}>
+
+
             <TabPane tab="01 CHỌN GHẾ & THANH TOÁN" key="1">
                 <Checkout {...props} />
             </TabPane>

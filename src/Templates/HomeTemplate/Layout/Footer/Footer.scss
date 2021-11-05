@@ -1,10 +1,11 @@
+@import "../../../../assets/scss/main.scss";
 $bg-color-footer: #222;
 $color-link: #949494;
 $color-link-hover: white;
 @mixin contentFooter {
   font-weight: 500;
   font-size: 12px;
-  color:$color-link;
+  color: $color-link;
 }
 .footer {
   background-color: $bg-color-footer;
@@ -20,7 +21,7 @@ $color-link-hover: white;
     h1 {
       margin-bottom: 0;
       @include contentFooter;
-      color:white;
+      color: white;
       font-weight: 400;
     }
     p {
@@ -28,4 +29,84 @@ $color-link-hover: white;
       @include contentFooter;
     }
   }
+}
+
+@include desktop {
+  .footer {
+    .container {
+      @include padding-x(60px);
+    }
+  }
+}
+@include ipad {
+  .footer {
+    @include padding-x(0);
+    .container {
+      @include padding-x(0px);
+      > div {
+        &:first-child {
+          @include padding-x(70px);
+        }
+        > div {
+          &:nth-child(5) {
+            grid-column-start: 3;
+          }
+        }
+      }
+      .ipadDisplayNone {
+        display: none;
+      }
+      .footer__companyInfo {
+        text-align: center;
+      }
+    }
+  }
+}
+
+@include iphone6-7-8plus {
+  .footer {
+    padding:10px 0;
+    padding-bottom: 70px;
+    .container {
+      > div {
+        &:first-child {
+          display:flex;
+          flex-direction: column;
+          >div {
+            &:nth-child(2) {
+              div {
+                flex-direction: row;
+                justify-content: space-between;
+                a {
+                  margin:0;
+                }
+              }
+            }
+            &:last-child {
+              div {
+                display:flex;
+                justify-content: center;
+                width:100%;
+              }
+            }
+          }
+        }
+
+      }
+    }
+    .footer__companyInfo {
+      padding-top:0;
+      flex-direction: column;
+      align-items: center;
+      div {
+        &:nth-child(1) {
+          margin :20px 0;
+        }
+       
+      }
+    }
+  }
+}
+
+@include iphone6-7-8 {
 }

@@ -3,11 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
 import { capNhatThongTinNguoiDung, layThongTinTaiKhoanAction } from '../../redux/actions/QuanLyNguoiDungActions';
 import { GROUP_ID, USER_LOGIN } from '../../util/settings'
-import { Button, Tabs } from 'antd';
-import { AppleOutlined, AndroidOutlined, ExclamationCircleOutlined, HomeOutlined, SettingOutlined } from '@ant-design/icons';
+import { Tabs } from 'antd';
+import { ExclamationCircleOutlined, HomeOutlined, SettingOutlined } from '@ant-design/icons';
 import { Table, Modal } from 'antd';
 import moment from 'moment';
-import styleProfile from "./Profile.module.scss";
 import "./Profile.scss";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -284,7 +283,7 @@ export default function Profile(props) {
         <div className="profile container absolute top-0">
             <div>
                 <NavLink to="/home" className="absolute top-4 left-6">
-                    <HomeOutlined className="text-3xl hover:opacity-60 transition-all duration-200" />
+                    <HomeOutlined style={{color:'white'}} className="text-3xl hover:opacity-60 transition-all duration-200" />
                 </NavLink>
             </div>
             <Tabs defaultActiveKey="1" className="w-full">

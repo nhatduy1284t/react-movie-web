@@ -6,11 +6,9 @@ import "./HomeCarousel.css";
 export default function HomeCarousel(props) {
     const { arrImg } = useSelector(state => state.CarouselReducer)
     const contentStyle = {
-        height: '720px',
         lineHeight: '160px',
         textAlign: 'center',
         backgroundSize:'cover',
-        backgroundPosition:'center',
         backgroundRepeat:'no-repeat',
         marginTop:'64px'
     };
@@ -24,15 +22,15 @@ export default function HomeCarousel(props) {
     const renderImg = () => {
 
         return arrImg.map((item, index) => {
-            return <div className="w-full">
-                <div style={{...contentStyle,backgroundImage:`url("${item.hinhAnh}")`}}>
+            return <div key={index} className="w-full">
+                <div className="carousel__item" style={{...contentStyle,backgroundImage:`url("${item.hinhAnh}")`}}>
                     <img className="opacity-0" src={arrImg.hinhAnh} />
                 </div>
             </div>
         })
     }
     return (
-        <Carousel effect="fade">
+        <Carousel effect="scrollx" autoplay >
             {renderImg()}
         </Carousel>
        

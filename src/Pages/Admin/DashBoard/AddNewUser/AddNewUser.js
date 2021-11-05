@@ -1,22 +1,14 @@
 import React from 'react'
 import { useState } from 'react';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
     Form,
     Input,
     Button,
-    Radio,
     Select,
-    Cascader,
-    DatePicker,
-    InputNumber,
-    TreeSelect,
-    Switch,
 } from 'antd';
-import * as Yup from 'yup';
 import { GROUP_ID } from '../../../../util/settings';
-import { ExclamationCircleOutlined } from '@ant-design/icons';
+
 import { useFormik } from 'formik';
 import { themNguoiDungAction } from '../../../../redux/actions/QuanLyNguoiDungActions';
 export default function AddNewUser(props) {
@@ -39,20 +31,9 @@ export default function AddNewUser(props) {
         }
     })
 
-    const displayError = (field) => {
-        return formik.touched[field] && formik.errors[field] ?
-            <div className="flex bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                <ExclamationCircleOutlined className="mr-2" />
-                <span className="block sm:inline">{formik.errors[field]}</span>
 
-            </div>
-            : null;
-    }
     const [componentSize, setComponentSize] = useState('default');
 
-    const onFormLayoutChange = ({ size }) => {
-        setComponentSize(size);
-    };
     return (
         <div>
             <h1 className="text-center text-2xl mb-5">Thêm người dùng</h1>
