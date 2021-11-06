@@ -2,9 +2,7 @@ import { GROUP_ID } from "../util/settings";
 import { baseService } from "./baseService";
 
 class QuanLyNguoiDungService extends baseService {
-    constructor(props) {
-        super(props)
-    }
+
     dangNhap = (thongTinDangNhap) => {
 
         return this.post(`/api/QuanLyNguoiDung/DangNhap`,thongTinDangNhap)

@@ -53,7 +53,7 @@ export default function Register() {
                 className="p-10 rounded-lg flex justify-center items-center flex-col shadow-md"
                 onSubmit={formik.handleSubmit}
             >
-                <img className="cursor-pointer" src="https://tix.vn/app/assets/img/login/group@2x.png" onClick={() =>{history.push("/home")}}/>
+                <img alt="img" className="cursor-pointer" src="https://tix.vn/app/assets/img/login/group@2x.png" onClick={() =>{history.push("/home")}}/>
                 <p className="mb-5 text-3xl uppercase text-gray-600 "></p>
                 <div className="mt-5">
                     <h1 className="text-red-500">Tài khoản</h1>

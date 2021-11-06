@@ -24,6 +24,7 @@ export default function Profile(props) {
     useEffect(() => {
 
         dispatch(layThongTinTaiKhoanAction());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     let userLogin = JSON.parse(localStorage.getItem(USER_LOGIN));
 
@@ -141,7 +142,7 @@ export default function Profile(props) {
     }
     function onChange(pagination, filters, sorter, extra) {
         // console.log('params', pagination, filters, sorter, extra);
-        console.log('page',pagination)
+        console.log('page', pagination)
     }
     const renderTabModal = () => {
         return <Tabs defaultActiveKey="1" >
@@ -277,7 +278,7 @@ export default function Profile(props) {
         <div className="profile container mx-auto relative">
             <div>
                 <NavLink to="/home" className="homeBtn absolute top-4 left-6 z-50">
-                    <HomeOutlined style={{color:'white'}} className="text-3xl hover:opacity-60 transition-all duration-200" />
+                    <HomeOutlined style={{ color: 'white' }} className="text-3xl hover:opacity-60 transition-all duration-200" />
                 </NavLink>
             </div>
             <Tabs defaultActiveKey="1" className="w-full">
@@ -297,7 +298,7 @@ export default function Profile(props) {
                             "linear-gradient(to bottom,rgba(20,50,93,0.9),rgba(8,22,48,.9))"
                     }} className="p-6 sm:p-12 dark:bg-coolGray-900 dark:text-coolGray-100 text-white w-full rounded-xl">
                         <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
-                            <img src="https://d29fhpw069ctt2.cloudfront.net/icon/image/84587/preview.svg" alt className="self-center flex-shrink-0 w-24 h-24 border rounded-full md:justify-self-start dark:bg-coolGray-500 dark:border-coolGray-700" />
+                            <img src="https://d29fhpw069ctt2.cloudfront.net/icon/image/84587/preview.svg" alt="img" className="self-center flex-shrink-0 w-24 h-24 border rounded-full md:justify-self-start dark:bg-coolGray-500 dark:border-coolGray-700" />
                             <div className="flex flex-col">
                                 <div className="flex">
                                     <h4 className=" text-3xl font-semibold text-white text-center relative">
@@ -330,7 +331,7 @@ export default function Profile(props) {
                     }
                     key="2"
                 >
-                    <Table pagination={{ pageSize: 6}}
+                    <Table pagination={{ pageSize: 6 }}
                         columns={columns} dataSource={data} onChange={onChange} className="rounded-full " />
                 </TabPane>
             </Tabs>

@@ -27,10 +27,10 @@ export default function AdminTemplate(props) {
     return (<Route {...restProps} render={(propsRoute) => {
       return <Layout>
         <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-          <div className="logo" className="absolute top-2 left-0" >
+          <div className="logo absolute top-2 left-0"  >
             <img onClick={() => {
               history.push("/");
-            }} className="w-full cursor-pointer" src="https://tix.vn/app/assets/img/icons/web-logo.png" style={{ width: '50px' }} />
+            }} className="w-full cursor-pointer" alt="img" src="https://tix.vn/app/assets/img/icons/web-logo.png" style={{ width: '50px' }} />
           </div>
           <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
 
@@ -76,8 +76,8 @@ export default function AdminTemplate(props) {
   return (<Route {...restProps} render={(propsRoute) => {
     return <Layout style={{ minHeight: '100vh' }}>
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
-        <div className="logo" className="flex flex-row justify-center" >
-          <img onClick={() => {
+        <div className="logo flex flex-row justify-center"  >
+          <img alt="img" onClick={() => {
             history.push("/");
           }} className="w-full cursor-pointer" src="https://tix.vn/app/assets/img/icons/web-logo.png" style={{ width: '50px' }} />
         </div>

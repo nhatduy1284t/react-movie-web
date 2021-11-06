@@ -50,7 +50,7 @@ export default function MultipleRowSlick(props) {
             <div className="flex flex-wrap">
                 {renderPhim()}
             </div>
-            {xemThemClick == false && <div className="text-center">
+            {xemThemClick === false && <div className="text-center">
 
                 <button onClick={() => {
                     setXemThemClick(true);
@@ -72,7 +72,7 @@ export default function MultipleRowSlick(props) {
                 footer={null}
                 className="p-0"
             >
-                <iframe id="video" className={`w-full`} height={500} src={trailerSrc}>
+                <iframe title="This is a unique titles"  id="video" className={`w-full`} height={500} src={trailerSrc}>
                 </iframe>
             </Modal>
         </div>

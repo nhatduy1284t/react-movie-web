@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import MultipleRows from '../../components/RSlick/MultipleRowSlick';
 import MultipleRowsMobile from '../../components/RSlick/MultipleRowSlickMobile';
@@ -15,8 +15,9 @@ export default function Home() {
     useEffect(() => {
         dispatch(layDanhSachPhimAction());
         dispatch(layDanhSachHeThongRapAction());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    console.log(window.innerWidth)
+
     return (
         <div className="home">
             <div className="home__carousel">
@@ -41,8 +42,8 @@ export default function Home() {
                             <p>Không chỉ đặt vé, bạn còn có thể bình luận phim, chấm điểm rạp và đổi quà hấp dẫn.</p>
                             <button className="text-lg font-medium mb-2">App miễn phí - Tải về ngay!</button>
                             <p>TIX có hai phiên bản
-                                <a className="text-white border-b-2"> iOS</a> &
-                                <a className="text-white border-b-2"> Android</a>
+                                <a href="/home" className="text-white border-b-2"> iOS</a> &
+                                <a href="/home" className="text-white border-b-2"> Android</a>
                             </p>
                         </div>
                         <div className="w-1/2 flex justify-end">

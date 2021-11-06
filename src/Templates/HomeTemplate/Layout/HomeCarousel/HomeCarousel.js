@@ -8,23 +8,23 @@ export default function HomeCarousel(props) {
     const contentStyle = {
         lineHeight: '160px',
         textAlign: 'center',
-        backgroundSize:'cover',
-        backgroundRepeat:'no-repeat',
-        marginTop:'64px'
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        marginTop: '64px'
     };
     const dispatch = useDispatch();
-    
-    useEffect(() => {   
+
+    useEffect(() => {
         const action = getCarouselAction();
         dispatch(action);
-
-    },[])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
     const renderImg = () => {
 
         return arrImg.map((item, index) => {
             return <div key={index} className="w-full">
-                <div className="carousel__item" style={{...contentStyle,backgroundImage:`url("${item.hinhAnh}")`}}>
-                    <img className="opacity-0" src={arrImg.hinhAnh} />
+                <div className="carousel__item" style={{ ...contentStyle, backgroundImage: `url("${item.hinhAnh}")` }}>
+                    <img alt="img" className="opacity-0" src={arrImg.hinhAnh} />
                 </div>
             </div>
         })
@@ -33,7 +33,7 @@ export default function HomeCarousel(props) {
         <Carousel effect="scrollx" autoplay >
             {renderImg()}
         </Carousel>
-       
-       
+
+
     )
 }

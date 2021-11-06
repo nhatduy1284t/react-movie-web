@@ -30,7 +30,7 @@ const HomeMenu = memo((props) => {
                                     <p className="diaChi">{cumRap.diaChi}</p>
                                 </div>
                             </div>
-                        } key={index}>
+                        } >
                             {/* {noi dung tab } */}
                             {cumRap.danhSachPhim.map((phim, index) => {
 

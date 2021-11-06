@@ -1,11 +1,9 @@
-import { GROUP_ID } from "../util/settings";
+
 import { ThongTinDatVe } from "../_core/models/ThongTinDatVe";
 import { baseService } from "./baseService";
 
 class QuanLyDatVeService extends baseService {
-    constructor() {
-        super()
-    }
+
     layChiTietPhongVe = (maLichChieu) => {
 
         return this.get(`/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`);

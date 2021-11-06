@@ -3,10 +3,7 @@ import { GROUP_ID } from "../util/settings";
 import { baseService } from "./baseService";
 
 class QuanLyRapService extends baseService {
-    constructor(props) {
-        super(props)
-    }
-
+  
     layDanhSachHeThongRap = () => {
 
         return this.get(`/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GROUP_ID}`);

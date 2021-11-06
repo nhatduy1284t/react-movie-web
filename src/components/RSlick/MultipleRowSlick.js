@@ -42,8 +42,8 @@ export default function MultipleRowSlick(props) {
     });
     const renderPhim = () => {
         return props.arrPhim.map((item, index) => {
-            return <div key={item}>
-                <Film phim={item} key={index} setTrailer={setTrailer} setTrailerSrc={setTrailerSrc}  setVisible={setVisible}/>
+            return <div key={`${item} ${index}`}>
+                <Film phim={item}  setTrailer={setTrailer} setTrailerSrc={setTrailerSrc}  setVisible={setVisible}/>
             </div>
         })
     }
@@ -96,7 +96,7 @@ export default function MultipleRowSlick(props) {
                 footer={null}
                 className="p-0"
             >
-                <iframe id="video" className={`w-full`} height={500} src={trailerSrc}>
+                <iframe title="This is a unique title"  id="video" className={`w-full`} height={500} src={trailerSrc}>
                 </iframe>
             </Modal>
         </div>

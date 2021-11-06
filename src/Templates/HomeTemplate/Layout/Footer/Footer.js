@@ -35,7 +35,7 @@ const Footer = memo((props) => {
                         <ul className="grid grid-cols-5 gap-2 text-sm dark:text-coolGray-400">
                             {arrHeThongRap.map((item, index) => {
                                 return <li className="mt-0" style={{ width: "30px", height: '30px' }} key={index}>
-                                    <img src={item.logo} className=" hover:opacity-60 cursor-pointer duration-300" />
+                                    <img alt="img" src={item.logo} className=" hover:opacity-60 cursor-pointer duration-300" />
                                 </li>
                             })}
 
@@ -45,10 +45,10 @@ const Footer = memo((props) => {
                         <h2 className="font-medium text-white" >MOBILE APP</h2>
                         <div className="flex space-y-2 text-sm dark:text-coolGray-400">
                             <NavLink to="/home" style={{ width: "30px", height: '30px', marginRight: '10px' }}>
-                                <img src="https://tix.vn/app/assets/img/icons/apple-logo.png" style={{ width: '100%' }} className="mr-2 w-full hover:opacity-60 cursor-pointer duration-300" />
+                                <img alt="imgs" src="https://tix.vn/app/assets/img/icons/apple-logo.png" style={{ width: '100%' }} className="mr-2 w-full hover:opacity-60 cursor-pointer duration-300" />
                             </NavLink>
-                            <a style={{ width: "30px", height: '30px', marginTop: '0' }} className="mt-0">
-                                <img src="https://tix.vn/app/assets/img/icons/android-logo.png" style={{ width: '100%' }} className="w-full hover:opacity-60 cursor-pointer duration-300" />
+                            <a href="/home" style={{ width: "30px", height: '30px', marginTop: '0' }} className="mt-0">
+                                <img alt="imgs" src="https://tix.vn/app/assets/img/icons/android-logo.png" style={{ width: '100%' }} className="w-full hover:opacity-60 cursor-pointer duration-300" />
                             </a>
 
                         </div>
@@ -57,10 +57,10 @@ const Footer = memo((props) => {
                         <h2 className="font-medium text-white ipadDisplayNone">SOCIAL</h2>
                         <div className="flex space-y-2 text-sm dark:text-coolGray-400">
                             <NavLink to="/home" style={{ width: "30px", height: '30px', marginRight: '10px' }}>
-                                <img src="https://tix.vn/app/assets/img/icons/facebook-logo.png" style={{ width: '100%' }} className="mr-2 w-full hover:opacity-60 cursor-pointer duration-300" />
+                                <img alt="img" src="https://tix.vn/app/assets/img/icons/facebook-logo.png" style={{ width: '100%' }} className="mr-2 w-full hover:opacity-60 cursor-pointer duration-300" />
                             </NavLink>
                             <NavLink to="/home" style={{ width: "30px", height: '30px', marginTop: '0' }}>
-                                <img src="https://tix.vn/app/assets/img/icons/zalo-logo.png" style={{ width: '100%' }} className="mr-2 w-full hover:opacity-60 cursor-pointer duration-300" />
+                                <img alt="img" src="https://tix.vn/app/assets/img/icons/zalo-logo.png" style={{ width: '100%' }} className="mr-2 w-full hover:opacity-60 cursor-pointer duration-300" />
                             </NavLink>
                         </div>
                     </div>

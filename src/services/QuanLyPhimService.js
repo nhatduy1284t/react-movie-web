@@ -3,9 +3,7 @@ import { GROUP_ID } from "../util/settings";
 import { baseService } from "./baseService";
 
 class QuanLyPhimService extends baseService {
-    constructor(props) {
-        super(props)
-    }
+
     layDanhSachBanner = () => {
        
         return this.get(`api/QuanLyPhim/LayDanhSachBanner`)

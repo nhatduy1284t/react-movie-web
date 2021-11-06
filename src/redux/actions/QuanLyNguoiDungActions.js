@@ -6,7 +6,7 @@ export const dangNhapAction = (thongTinDangNhap) => {
     return async (dispatch) => {
         try {
             const result = await quanLyNguoiDungService.dangNhap(thongTinDangNhap);
-            console.log(result)
+
             dispatch({
                 type: DANG_NHAP,
                 thongTinDangNhap: result.data.content
@@ -22,7 +22,7 @@ export const layThongTinTaiKhoanAction = () => {
     return async (dispatch) => {
         try {
             const result = await quanLyNguoiDungService.layThongTinTaiKhoan();
-            console.log("laythongTIn")
+  
             dispatch({
                 type: SET_THONG_TIN_NGUOI_DUNG,
                 thongTinNguoiDung: result.data.content
@@ -117,9 +117,8 @@ export const themNguoiDungAction = (thongTin) => {
     return async (dispatch) => {
         try {
             const result = await quanLyNguoiDungService.themNguoiDung(thongTin);
-            console.log(result)
-            alert("Thêm thành công !");
 
+            alert("Thêm thành công !");
 
         } catch (error) {
             console.log(error.response)
@@ -131,10 +130,10 @@ export const timKiemNguoiDungAction = (thongTin) => {
     return async (dispatch) => {
         try {
             const result = await quanLyNguoiDungService.timKiemNguoiDung(thongTin);
-            console.log(result)
+
             dispatch({
-                type:SET_DANH_SACH_NGUOI_DUNG,
-                danhSachNguoiDung:result.data.content
+                type: SET_DANH_SACH_NGUOI_DUNG,
+                danhSachNguoiDung: result.data.content
             })
 
         } catch (error) {

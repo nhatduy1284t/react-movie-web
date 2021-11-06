@@ -38,7 +38,7 @@ export default function Header() {
         if (_.isEmpty(userLogin)) {
             return <Fragment>
                 <div className="flex">
-                    <img src="https://tix.vn/app/assets/img/avatar.png" className="rounded-full mr-2" width={30} />
+                    <img alt="img" src="https://tix.vn/app/assets/img/avatar.png" className="rounded-full mr-2" width={30} />
                     <button onClick={() => {
                         history.push('/login')
                     }} className="self-center rounded text-gray-400">Đăng nhập</button>
@@ -49,7 +49,7 @@ export default function Header() {
         return <Dropdown overlay={menu} trigger={'click'} >
             <button onClick={() => {
             }} className="ant-dropdown-link self-center px-8 py-3 rounded text-black">
-                {userLogin.taiKhoan} <DownOutlined />
+               Hello {userLogin.taiKhoan} <DownOutlined />
             </button>
 
         </Dropdown>
@@ -68,7 +68,7 @@ export default function Header() {
 
                 <nav className="container flex justify-between h-16 mx-auto px-4">
                     <NavLink to="/home" aria-label="Back to homepage" className="flex items-center p-2">
-                        <img width={50} src="https://tix.vn/app/assets/img/icons/web-logo.png" />
+                        <img alt="img" width={50} src="https://tix.vn/app/assets/img/icons/web-logo.png" />
                     </NavLink>
                     <ul className="header__navItem mb-0 items-stretch hidden space-x-3 lg:flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
 
@@ -80,7 +80,7 @@ export default function Header() {
                         </li>
 
                         <li className="flex">
-                            <a href="#" activeclassname="" className="navLink">Tin tức</a>
+                            <a href="/home" activeclassname="" className="navLink">Tin tức</a>
                         </li>
                         <li className="flex">
                             <a href="#ungDung" activeclassname="" className="navLink">Ứng dụng</a>
@@ -122,7 +122,7 @@ export default function Header() {
                             </li>
 
                             <li className="flex">
-                                <a href="#" activeclassname="" className="navLink">Tin tức</a>
+                                <a href="/home" activeclassname="" className="navLink">Tin tức</a>
                             </li>
                             <li className="flex">
                                 <a href="#ungDung" activeclassname="" className="navLink">Ứng dụng</a>

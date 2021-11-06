@@ -1,9 +1,3 @@
-export class ThongTinLichChieu {
-    thongTinPhim = new ThongTinPhim();
-    danhSachGhe =[];
-}
-
-
 export class ThongTinPhim {
     "diaChi" = "";
     "gioChieu" = "";
@@ -14,14 +8,21 @@ export class ThongTinPhim {
     "tenPhim" = "";
     "tenRap" = "";
 }
+export class ThongTinLichChieu {
+    thongTinPhim = new ThongTinPhim();
+    danhSachGhe = [];
+}
+
+
+
 
 export class Ghe {
-    maGhe='';
-    tenGhe='';
-    maRap='';
-    loaiGhe='';
-    stt='';
-    giaVe='';
-    daDat='';
-    taiKhoanNguoiDat='';
+    maGhe = '';
+    tenGhe = '';
+    maRap = '';
+    loaiGhe = '';
+    stt = '';
+    giaVe = '';
+    daDat = '';
+    taiKhoanNguoiDat = '';
 }
