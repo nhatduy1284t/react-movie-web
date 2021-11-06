@@ -59,6 +59,12 @@ $label-font-size-redo: $default-size * 4;
 
 .set-size {
   font-size: 14em;
+  margin: 0 auto;
+}
+@media screen and (max-width:414px)  {
+  .set-size {
+    font-size: 8em;
+  }
 }
 
 .charts-container {

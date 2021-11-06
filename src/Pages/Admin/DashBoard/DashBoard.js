@@ -1,11 +1,12 @@
 /*eslint-disable*/ 
 import React, { useEffect } from 'react'
 import { Table, Input, Button } from 'antd';
-import { SearchOutlined, EditOutlined, DeleteOutlined, CalendarOutlined } from '@ant-design/icons';
+import { SearchOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { history } from '../../../App';
 import { layDanhSachNguoiDungAction, timKiemNguoiDungAction, xoaNguoiDungAction } from '../../../redux/actions/QuanLyNguoiDungActions';
+import "./DashBoard.scss"
 const { Search } = Input;
 
 export default function Dashboard(props) {
@@ -63,8 +64,7 @@ export default function Dashboard(props) {
                 return text === "KhachHang" ? <span key={film.maLoaiKhacHang}>Khách hàng</span> : <span className="text-red-600">Quản trị</span>
             },
 
-
-            width: '20%'
+            width: '15%'
         },
         {
             title: 'Hành động',
@@ -93,7 +93,6 @@ export default function Dashboard(props) {
         data = arrPhimSearch;
     }
     const onChange = (pagination, filters, sorter, extra) => {
-        console.log('params', pagination, filters, sorter, extra);
     }
     const onSearch = async (e) => {
 
@@ -101,7 +100,7 @@ export default function Dashboard(props) {
     };
 
     return (
-        <div>
+        <div className="dashboard">
             <div>
                 <Button onClick={() => {
                     history.push('/admin/films/addnew')

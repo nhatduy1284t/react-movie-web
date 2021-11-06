@@ -23,16 +23,65 @@ export default function AdminTemplate(props) {
     setState({ collapsed });
   };
   const { collapsed } = state;
+  if (window.innerWidth <= 414) {
+    return (<Route {...restProps} render={(propsRoute) => {
+      return <Layout>
+        <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
+          <div className="logo" className="absolute top-2 left-0" >
+            <img onClick={() => {
+              history.push("/");
+            }} className="w-full cursor-pointer" src="https://tix.vn/app/assets/img/icons/web-logo.png" style={{ width: '50px' }} />
+          </div>
+          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
+
+            <SubMenu key="sub2" icon={<FileOutlined />} title="User">
+              <Menu.Item key="4" icon={<DesktopOutlined />} onClick={() => {
+                history.push('/admin/dashboard');
+              }}>
+                User
+              </Menu.Item>
+              <Menu.Item key="5" icon={<DesktopOutlined />} onClick={() => {
+                history.push('/admin/dashboard/addnewuser');
+              }}>
+                Add new user
+              </Menu.Item>
+            </SubMenu>
+            <SubMenu key="sub1" icon={<FileOutlined />} title="Film">
+              <Menu.Item key="2" icon={<DesktopOutlined />} onClick={() => {
+                history.push('/admin/films');
+              }}>
+                Films
+              </Menu.Item>
+              <Menu.Item key="3" icon={<DesktopOutlined />} onClick={() => {
+                history.push('/admin/films/addnew');
+              }}>
+                Add new
+              </Menu.Item>
+            </SubMenu>
+
+          </Menu>
+        </Header>
+        <Content className="site-layout" style={{ marginTop: 64 }}>
+          <div className="site-layout-background" style={{ minHeight: 360 }}>
+            <Component {...propsRoute} />
+          </div>
+        </Content>
+
+      </Layout>
+    }}>
+
+    </Route>
+    )
+  }
   return (<Route {...restProps} render={(propsRoute) => {
     return <Layout style={{ minHeight: '100vh' }}>
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
         <div className="logo" className="flex flex-row justify-center" >
-          <img className="w-full" src="https://tix.vn/app/assets/img/icons/web-logo.png" style={{ width: '50px' }} />
-
+          <img onClick={() => {
+            history.push("/");
+          }} className="w-full cursor-pointer" src="https://tix.vn/app/assets/img/icons/web-logo.png" style={{ width: '50px' }} />
         </div>
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-
-
           <SubMenu key="sub2" icon={<FileOutlined />} title="User">
             <Menu.Item key="4" icon={<DesktopOutlined />} onClick={() => {
               history.push('/admin/dashboard');
@@ -59,11 +108,6 @@ export default function AdminTemplate(props) {
               Add new
             </Menu.Item>
           </SubMenu>
-          {/* <Menu.Item key="9" icon={<FileOutlined />} onClick={() => {
-            history.push('/admin/showtime');
-          }}>
-            ShowTime
-          </Menu.Item> */}
         </Menu>
       </Sider>
       <Layout className="site-layout">

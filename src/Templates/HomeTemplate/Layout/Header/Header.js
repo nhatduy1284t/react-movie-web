@@ -14,43 +14,44 @@ const { Option } = Select;
 export default function Header() {
     const { userLogin } = useSelector(state => state.QuanLyNguoiDungReducer);
     const [isClickMenu, setIsClickMenu] = useState(false);
-    const {isClickDropDown,setIsClickDropDown} = useState(false);
+    const { isClickDropDown, setIsClickDropDown } = useState(false);
     const { t, i18n } = useTranslation();
     const handleChange = (value) => {
         i18n.changeLanguage(value);
     }
     const menu = (
         <Menu>
-            <Menu.Item>
-                <NavLink rel="noopener noreferrer" to="/profile">
+            <Menu.Item key="0">
+                <NavLink to="/profile">
                     Thông tin cá nhân
                 </NavLink>
             </Menu.Item>
-
-            <Menu.Item danger onClick={() => {
+            <Menu.Item key="1" danger onClick={() => {
                 localStorage.removeItem(TOKEN);
                 localStorage.removeItem(USER_LOGIN);
                 window.location.reload();
             }}>Đăng xuất</Menu.Item>
         </Menu>
     );
+
     const renderLogin = () => {
         if (_.isEmpty(userLogin)) {
             return <Fragment>
                 <div className="flex">
                     <img src="https://tix.vn/app/assets/img/avatar.png" className="rounded-full mr-2" width={30} />
                     <button onClick={() => {
-
                         history.push('/login')
                     }} className="self-center rounded text-gray-400">Đăng nhập</button>
                 </div>
             </Fragment>
         }
-        return <Dropdown overlay={menu} trigger={['click']}>
-            <NavLink onClick={() => {
-            }} className="ant-dropdown-link self-center px-8 py-3 rounded text-black" to="/profile">
-                {t('Hello')}  {userLogin.taiKhoan} <DownOutlined />
-            </NavLink>
+
+        return <Dropdown overlay={menu} trigger={'click'} >
+            <button onClick={() => {
+            }} className="ant-dropdown-link self-center px-8 py-3 rounded text-black">
+                {userLogin.taiKhoan} <DownOutlined />
+            </button>
+
         </Dropdown>
 
     }
@@ -64,6 +65,7 @@ export default function Header() {
     return (
         <Fragment>
             <header className="header dark:bg-coolGray-800 dark:text-coolGray-100 bg-white bg-opacity-95 fixed w-full text-black">
+
                 <nav className="container flex justify-between h-16 mx-auto px-4">
                     <NavLink to="/home" aria-label="Back to homepage" className="flex items-center p-2">
                         <img width={50} src="https://tix.vn/app/assets/img/icons/web-logo.png" />
@@ -110,7 +112,7 @@ export default function Header() {
 
                 </div>
                 <div className={`sideMenu ${classDisplaySideMenu} absolute top-0 right-0`} style={{ width: '70%' }}>
-                    <div style={{fontSize:'18px'}}>
+                    <div style={{ fontSize: '18px' }}>
                         {renderLogin()}
                     </div>
                     <nav>
@@ -130,7 +132,7 @@ export default function Header() {
                             </li> : <Fragment />}
                         </ul>
                     </nav>
-                 
+
                 </div>
             </header>
         </Fragment>

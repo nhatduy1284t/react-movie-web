@@ -1,0 +1,11 @@
+@import "../../../../assets/scss/main.scss";
+
+@include ipad {
+  .addnewuser {
+    .ant-form-item-label {
+      overflow: unset;
+      margin-right: 35px;
+      text-align: left;
+    }
+  }
+}

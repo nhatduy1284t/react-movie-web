@@ -4,19 +4,25 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
 }
 html {
-  scroll-behavior: smooth;
+
   width: 100%;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 body {
   width: 100%;
   overflow-x: hidden;
   font-family: "Noto Sans Display", sans-serif;
+  scroll-behavior: smooth;
 }
-.ant-dropdown.ant-dropdown-placement-bottomLeft {
-  z-index: 9999;
-  width:70%;
-  left:30%!important;
+@media screen and (max-width:1024px) {
+  .ant-dropdown.ant-dropdown-placement-bottomLeft {
+    z-index: 9999;
+    width: 70%;
+    left: 30% !important;
+  }
 }
+

@@ -8,9 +8,9 @@ import {
     Select,
 } from 'antd';
 import { GROUP_ID } from '../../../../util/settings';
-
 import { useFormik } from 'formik';
 import { themNguoiDungAction } from '../../../../redux/actions/QuanLyNguoiDungActions';
+import "./AddNewUser.scss";
 export default function AddNewUser(props) {
     const dispatch = useDispatch();
 
@@ -35,7 +35,7 @@ export default function AddNewUser(props) {
     const [componentSize, setComponentSize] = useState('default');
 
     return (
-        <div>
+        <div className="addnewuser">
             <h1 className="text-center text-2xl mb-5">Thêm người dùng</h1>
             <Form
                 labelCol={{

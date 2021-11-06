@@ -1,9 +1,9 @@
 /*eslint-disable*/ 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { datGheAction, datVeAction, layChiTietPhongVeAction } from '../../redux/actions/QuanLyDatVeActions';
 import style from './Checkout.module.css';
-import './Checkout.css'
+import './Checkout.scss';
 import { CloseOutlined, HomeOutlined, SmileOutlined, UserOutlined } from '@ant-design/icons'
 import _ from 'lodash';
 import { Tabs } from 'antd';
@@ -34,7 +34,6 @@ function Checkout(props) {
         connection.invoke('loadDanhSachGhe', props.match.params.id)
         //Load danh sach ghe dang dat tu server(lắng nghe tín hiệu tu)
         connection.on("loadDanhSachGheDaDat", (dsGheKhachDat) => {
-            console.log('danhSachGheKhachDat', dsGheKhachDat);
             //Bước 1: Loại mình ra khỏi danh sách 
             dsGheKhachDat = dsGheKhachDat.filter(item => item.taiKhoan !== userLogin.taiKhoan);
             //Bước 2 gộp danh sách ghế khách đặt ở tất cả user thành 1 mảng chung 
@@ -88,13 +87,11 @@ function Checkout(props) {
                 classGheDaDuocDat = 'gheDaDuocDat';
             }
 
-            return <div style={{ width: 'calc(100%/16)' }} key={index}>
+            return <div className="gheWrapper" key={index}>
                 <button onClick={() => {
 
                     const action = datGheAction(ghe, props.match.params.id);
                     dispatch(action);
-
-
                 }} disabled={ghe.daDat || classGheKhachDat !== ''} className={`ghe ${classGheVip} ${classGheDaDat} ${classGheDangDat} ${classGheDaDuocDat} ${classGheKhachDat} text-center`} key={index}>
 
                     {ghe.daDat ? classGheDaDuocDat !== '' ? <UserOutlined style={{ marginBottom: 7.5, fontWeight: 'bold' }} /> : <CloseOutlined style={{ marginBottom: 7.5, fontWeight: 'bold' }} /> : classGheKhachDat !== '' ? <SmileOutlined style={{ marginBottom: 7.5, fontWeight: 'bold' }} /> : ghe.stt}
@@ -106,8 +103,8 @@ function Checkout(props) {
         })
     }
     return (
-        <div className="container mx-auto" >
-            <div className="grid grid-cols-12">
+        <div className="contentWrapper container px-0 mx-auto" >
+            <div className="content grid grid-cols-12">
                 <div className="col-span-9">
                     <div className="flex flex-col items-center mt-5">
                         <div className="bg-black w-4/5 h-5" >
@@ -116,12 +113,12 @@ function Checkout(props) {
                         <div className={`${style['trapezoid']} text-center pt`}>
                             <h1 className="mt-3 text-black font-bold">Màn hình</h1>
                         </div>
-                        <div className="flex flex-wrap ">
+                        <div className="seats flex flex-wrap ">
                             {renderSeats()}
                         </div>
                     </div>
-                    <table>
-                        <thead>
+                    <table className="chuThich w-full">
+                        <thead className="tieuDe w-full">
                             <th>Ghế chưa đặt</th>
                             <th>Ghế đang đặt</th>
                             <th>Ghế vip</th>
@@ -130,7 +127,7 @@ function Checkout(props) {
                             <th>Ghế khách đang đặt</th>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
-                            <tr>
+                            <tr className="hinhMinhHoa text-center">
                                 <td><button className="ghe text-center"> <UserOutlined style={{ marginBottom: 7.5, fontWeight: 'bold' }} /> </button> </td>
                                 <td><button className="ghe gheDangDat text-center"> <UserOutlined style={{ marginBottom: 7.5, fontWeight: 'bold' }} /></button> </td>
                                 <td><button className="ghe gheVip text-center"><UserOutlined style={{ marginBottom: 7.5, fontWeight: 'bold' }} /></button> </td>
@@ -190,7 +187,7 @@ function Checkout(props) {
 
                     </div>
                     <div className="">
-                        <button className="w-full font-bold bg-green-600 py-6" onClick={() => {
+                        <button className="btnDatVe w-full font-bold bg-green-600 py-6" onClick={() => {
                             const thongTinDatVe = new ThongTinDatVe();
                             thongTinDatVe.maLichChieu = thongTinPhim.maLichChieu;
                             thongTinDatVe.danhSachVe = danhSachGheDangDat;
@@ -227,7 +224,7 @@ function KetQuaDatVe(props) {
             </div>
         })
     }
-    return <div >
+    return <div className="lichSuDatVe">
         <section className="text-gray-600 body-font">
             <div className="container px-5 py-24 mx-auto">
                 <div className="flex flex-col text-center w-full mb-20">
@@ -241,8 +238,6 @@ function KetQuaDatVe(props) {
                 </div>
                 <div className="flex flex-wrap -m-2">
                     {renderTicketItem()}
-
-
                 </div>
             </div>
         </section>
@@ -253,7 +248,7 @@ function KetQuaDatVe(props) {
 export default (props) => {
     const { activeTab } = useSelector(state => state.QuanLyDatVeReducer);
     const dispatch = useDispatch();
-    return <div className="px-4">
+    return <div className="checkout px-4">
         <Tabs defaultActiveKey='1' activeKey={activeTab} onChange={(key) => {
             dispatch({
                 type: 'CHUYEN_TAB_BINH_THUONG',
@@ -261,7 +256,7 @@ export default (props) => {
             })
 
         }} tabBarExtraContent={
-            <div style={{ cursor: 'pointer' }} onClick={() => { history.push('/home') }}>
+            <div style={{ cursor: 'pointer'}} onClick={() => { history.push('/home') }}>
                 <HomeOutlined style={{ fontSize: '25px' }} />
             </div>}>
 

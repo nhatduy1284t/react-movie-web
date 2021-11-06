@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { layDanhSachPhimAction, xoaPhimAction } from '../../../redux/actions/QuanLyPhimActions';
 import { NavLink } from 'react-router-dom';
 import { history } from '../../../App';
+import "./Films.scss";
 const { Search } = Input;
 
 export default function Films(props) {
@@ -119,14 +120,14 @@ export default function Films(props) {
     };
    
     return (
-        <div>
+        <div className="admin__films">
             <div>
                 <Button onClick={() => {
                     history.push('/admin/films/addnew')
                 }}>Thêm phim</Button>
             </div>
             <Search className="mb-5" placeholder="input search text " onChange={onSearch} enterButton={<SearchOutlined />} style={{ width: 200 }} />
-            <Table columns={columns} dataSource={data} onChange={onChange} rowKey={"maPhim"} />
+            <Table className="tableFilms" columns={columns} dataSource={data} onChange={onChange} rowKey={"maPhim"} />
 
         </div>
     )

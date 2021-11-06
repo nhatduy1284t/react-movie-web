@@ -34,7 +34,7 @@ function App() {
       <Switch>
         <HomeTemplate path='/' exact Component={Home} />
         <HomeTemplate path='/home' exact Component={Home} />
-      
+
         <HomeTemplate path='/detail/:id' exact Component={Detail} />
         <UserTemplate path='/login' exact Component={Login} />
         <UserTemplate path='/register' exact Component={Register} />
@@ -44,7 +44,6 @@ function App() {
         <AdminTemplate path="/admin/dashboard" exact Component={DashBoard} />
         <AdminTemplate path="/admin/dashboard/addnewuser" exact Component={AddNewUser} />
         <AdminTemplate path="/admin/dashboard/edit/:taiKhoan" exact Component={EditUser} />
-
         <AdminTemplate path="/admin/films" exact Component={Films} />
         <AdminTemplate path="/admin/films/addnew" exact Component={AddNew} />
         <AdminTemplate path="/admin/films/edit/:id" exact Component={Edit} />
@@ -54,7 +53,7 @@ function App() {
         {/* <Suspense fallback={<h1>LOADING...</h1>}>
           <CheckoutTemplateLazy path="/checkout/:id" exact Component={Checkout} />
         </Suspense> */}
-       
+
       </Switch>
     </Router>
 

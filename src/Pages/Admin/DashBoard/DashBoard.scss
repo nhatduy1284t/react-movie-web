@@ -1,0 +1,11 @@
+@import "../../../assets/scss/main.scss";
+@include ipad {
+  .dashboard {
+    .ant-table-container {
+      overflow-x: scroll;
+    }
+    .ant-table-thead > tr > th {
+      white-space: nowrap;
+    }
+  }
+}

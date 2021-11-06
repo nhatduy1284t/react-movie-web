@@ -15,7 +15,7 @@ export default function Home() {
     useEffect(() => {
         dispatch(layDanhSachPhimAction());
         dispatch(layDanhSachHeThongRapAction());
-    }, [])
+    }, []);
     console.log(window.innerWidth)
     return (
         <div className="home">

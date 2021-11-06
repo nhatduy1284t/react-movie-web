@@ -13,9 +13,7 @@ import * as Yup from 'yup';
 import { NavLink } from 'react-router-dom';
 const { TabPane } = Tabs;
 export default function Profile(props) {
-
     const dispatch = useDispatch();
-
     const { thongTinNguoiDung } = useSelector(state => state.QuanLyNguoiDungReducer);
     const [matKhauThayDoi, setMatKhauThayDoi] = useState({
         matKhauCu: '',
@@ -78,10 +76,6 @@ export default function Profile(props) {
 
     const showModal = () => {
         setIsModalVisible(true);
-    };
-
-    const handleOk = () => {
-        setIsModalVisible(false);
     };
 
     const handleCancel = () => {
@@ -280,9 +274,9 @@ export default function Profile(props) {
         return <Redirect to="/login" />
     }
     return (
-        <div className="profile container absolute top-0">
+        <div className="profile container mx-auto relative">
             <div>
-                <NavLink to="/home" className="absolute top-4 left-6">
+                <NavLink to="/home" className="homeBtn absolute top-4 left-6 z-50">
                     <HomeOutlined style={{color:'white'}} className="text-3xl hover:opacity-60 transition-all duration-200" />
                 </NavLink>
             </div>
@@ -303,7 +297,7 @@ export default function Profile(props) {
                             "linear-gradient(to bottom,rgba(20,50,93,0.9),rgba(8,22,48,.9))"
                     }} className="p-6 sm:p-12 dark:bg-coolGray-900 dark:text-coolGray-100 text-white w-full rounded-xl">
                         <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
-                            <img src="https://picsum.photos/200/200" alt className="self-center flex-shrink-0 w-24 h-24 border rounded-full md:justify-self-start dark:bg-coolGray-500 dark:border-coolGray-700" />
+                            <img src="https://d29fhpw069ctt2.cloudfront.net/icon/image/84587/preview.svg" alt className="self-center flex-shrink-0 w-24 h-24 border rounded-full md:justify-self-start dark:bg-coolGray-500 dark:border-coolGray-700" />
                             <div className="flex flex-col">
                                 <div className="flex">
                                     <h4 className=" text-3xl font-semibold text-white text-center relative">

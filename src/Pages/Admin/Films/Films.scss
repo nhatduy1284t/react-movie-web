@@ -1,0 +1,28 @@
+@import "../../../assets/scss/main.scss";
+@include iphone6-7-8plus {
+  .ant-layout-content {
+    margin: 0 !important;
+  }
+  .site-layout-background {
+    padding: 0 10px !important;
+
+  }
+  .admin__films {
+    .ant-table-container {
+      overflow-x: scroll;
+      .ant-table-thead {
+        white-space: nowrap;
+      }
+      .ant-table-tbody {
+        .ant-table-cell {
+          &:last-child {
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+    .ant-table-pagination-right {
+        justify-content: center;
+    }
+  }
+}

@@ -1,13 +1,11 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import React, { useState } from "react";
-import Slider from "react-slick";
 import styleSlick from './MultipleRowSlick.module.css';
 import Film from "../Film/Film";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_PHIM_DANG_CHIEU, SET_PHIM_SAP_CHIEU } from "../../redux/types/QuanLyPhimTypes";
 import { Modal } from "antd";
-import { history } from "../../App";
 
 
 export default function MultipleRowSlick(props) {
@@ -39,12 +37,12 @@ export default function MultipleRowSlick(props) {
     console.log(props.arrPhim.length)
     return (
         <div className="multipleRowMobile" id="lichChieu">
-            <div className="text-center mb-10">
-                <button className={`${styleSlick[activeClassDC]} px-8 py-3 font-semibold rounded bg-gray-800 text-white mr-2`} onClick={() => {
+            <div className="flex justify-center text-center mb-10" style={{padding:'0 10px'}}>
+                <button style={{fontSize:'12px'}}className={`${styleSlick[activeClassDC]} px-8 py-3 font-semibold rounded bg-gray-800 text-white mr-2`} onClick={() => {
                     const action = { type: SET_PHIM_DANG_CHIEU }
                     dispatch(action);
                 }}>PHIM ĐANG CHIẾU</button>
-                <button className={`${styleSlick[activeClassSC]} px-8 py-3 font-semibold rounded bg-white text-gray-800 border-gray-800 border`} onClick={() => {
+                <button style={{fontSize:'12px'}} className={`${styleSlick[activeClassSC]} px-8 py-3 font-semibold rounded bg-white text-gray-800 border-gray-800 border`} onClick={() => {
                     const action = { type: SET_PHIM_SAP_CHIEU }
                     dispatch(action);
                 }}>PHIM SẮP CHIẾU</button>

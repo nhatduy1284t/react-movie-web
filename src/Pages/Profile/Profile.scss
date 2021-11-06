@@ -1,7 +1,65 @@
+@import "../../assets/scss/main.scss";
 .profile {
   .ant-table-thead {
     .ant-table-cell {
-        background-color: #4fd1c5;
+      background-color: #4fd1c5;
+    }
+  }
+}
+
+@include desktop {
+  .profile {
+    padding: 0;
+    .homeBtn {
+      top: 0;
+      left: 0;
+      transform: translate(-200%, 50%);
+    }
+  }
+}
+@include ipad {
+  .profile {
+    .homeBtn {
+      transform: translate(50%,45%);
+    }
+    .ant-tabs > .ant-tabs-nav, .ant-tabs > div > .ant-tabs-nav {
+
+    }
+    .ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap {
+      max-width: 95%;
+      justify-content: flex-start;
+      padding-left: 70px;
+    }
+  }
+}
+@include iphone6-7-8plus {
+  .profile {
+    .ant-tabs-nav {
+      span {
+        font-size: 18px;
+      }
+  
+    }
+    .ant-table-container {
+      white-space: nowrap;
+      overflow: scroll;
+      .ant-table-row.ant-table-row-level-0 {
+        td {
+          &:nth-child(2) {
+            width:160;
+            display:inline-block;
+            white-space: normal;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include iphone6-7-8 {
+  .profile {
+     .ant-tabs-nav span {
+      font-size: 15px;
     }
   }
 }
