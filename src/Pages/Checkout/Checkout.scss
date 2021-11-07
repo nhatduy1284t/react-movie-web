@@ -38,6 +38,9 @@
   .checkout {
     .contentWrapper.container {
       max-width: 100%;
+      .seats {
+        text-align: center;
+      }
       .content {
         display: flex;
         flex-direction: column;
@@ -51,7 +54,7 @@
           font-size: 30px;
         }
         .gheWrapper {
-          margin-right: 10px;
+          
         }
       }
     }
