@@ -1,1 +1,1 @@
-movieappdemo.surge.sh
+http://movieticket-app-react.herokuapp.com/
