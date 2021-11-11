@@ -9,3 +9,10 @@
     }
   }
 }
+@include iphone6-7-8plus {
+  .dashboard {
+    .ant-input-group-wrapper {
+      margin-top: 45px;
+    }
+  }
+}
